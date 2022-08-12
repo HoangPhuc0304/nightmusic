@@ -1,0 +1,54 @@
+@import '../../common/config.scss';
+
+#book {
+  width: 100%;
+  margin-top: 46px;
+
+  .book-icon-return {
+    position: absolute;
+    top: 2rem;
+    left: 32px;
+    font-size: 32px;
+    color: var(--text-color);
+    z-index: 1;
+    cursor: pointer;
+  }
+  .book-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: $primary-color;
+    padding: 2rem 0 5rem;
+    padding-left: 16%;
+    padding-right: 16%;
+
+    @media only screen and (max-width: 739px) {
+      padding-left: 4%;
+      padding-right: 4%;
+    }
+  }
+  .book-heading {
+    text-align: center;
+    font-size: $font-heading;
+    color: $text-color;
+    font-weight: 600;
+    text-shadow: 0 0 1px #000;
+    // padding: 1.5rem 0;
+  }
+  .book-frame {
+    width: 100%;
+    margin-top: 1rem;
+    @include transition-ease;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      padding: 0 0.5rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 4px;
+    }
+  }
+}

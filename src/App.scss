@@ -1,0 +1,72 @@
+* {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background-color: #444;
+  }
+
+  @media only screen and (max-width: 1023px) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  overflow: overlay;
+  // overflow-x: hidden;
+
+  @media only screen and (max-width: 739px) {
+    overflow-x: hidden;
+  }
+}
+
+@import './common/config.scss';
+@import './components/Header/Header.scss';
+@import './components/Footer/Footer.scss';
+@import './components/Slider/Slider.scss';
+@import './components/Footer/Footer.scss';
+@import './components/BookList/BookList.scss';
+@import './components/SongNav/SongNav.scss';
+@import './components/SongSetting/SongSetting.scss';
+@import './components/Loading/Loading.scss';
+@import './components/ThumbnailVideo/ThumbnailVideo.scss';
+@import './components/Theme/SelectTheme.scss';
+@import './pages/Home/Home.scss';
+@import './pages/SignIn/SignIn.scss';
+@import './pages/SignUp/SignUp.scss';
+@import './pages/Book/Book.scss';
+@import './pages/BookSinger/BookSinger.scss';
+@import './pages/Contact/Contact.scss';
+@import './pages/Initial/Initial.scss';
+@import './pages/Song/Song.scss';
+@import './pages/Song/SongFollow/SongFollow.scss';
+@import './pages/Song/SongLibrary/SongLibrary.scss';
+@import './pages/Song/SongMV/SongMV.scss';
+@import './pages/Song/SongChart/SongChart.scss';
+@import './pages/Song/SongSearch/SongSearch.scss';
+@import './pages/MusicVideo/VideoDetail.scss';
+@import './pages/KindSong/KindSong.scss';
+@import './pages/User/User.scss';

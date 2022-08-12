@@ -1,0 +1,42 @@
+@import '../../../common/config.scss';
+.song-mv {
+  height: 100%;
+  @include animation(fadeLeft, ease, 1s);
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  user-select: none;
+  &-box {
+    margin: 0 24px;
+    flex-shrink: 1;
+    flex-direction: column;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+    will-change: scroll-position;
+    height: 100%;
+    margin-bottom: 5rem;
+  }
+  &-heading {
+    text-align: center;
+    font-size: $font-heading;
+    text-shadow: 0 0 4px var(--text-change);
+    font-weight: 700;
+    color: var(--text-color);
+  }
+  &-container {
+    margin-top: 3rem;
+  }
+  &-list {
+    margin: 3rem 0;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 3rem;
+
+    @media only screen and (min-width: 740px) and (max-width: 1023px) {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+  }
+}

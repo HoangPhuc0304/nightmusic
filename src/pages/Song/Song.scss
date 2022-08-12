@@ -1,0 +1,28 @@
+@import '../../common/config.scss';
+
+#song {
+  width: calc(100vw * 4 / 5);
+  height: 100vh;
+  display: flex;
+  padding-top: 45px;
+  background-color: var(--dark-color);
+  margin-left: calc(100vw / 5);
+  display: flex;
+  user-select: none;
+  @media only screen and (min-width: 740px) and (max-width: 1023px) {
+    margin-left: calc(100vw / 4);
+    width: calc(100vw * 3 / 4);
+  }
+  @media only screen and (max-width: 739px) {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .song-body {
+    background: var(--theme-background);
+    background-size: cover;
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+  }
+}

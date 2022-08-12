@@ -1,0 +1,4 @@
+const MAX_MOBILE = 740
+const MAX_TABLET = 1024
+
+export { MAX_MOBILE, MAX_TABLET }
