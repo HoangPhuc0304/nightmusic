@@ -8,7 +8,7 @@ const requestHandleSignIn = async (dispatch, data) => {
     const res = await publicRequest.post('/api/author/login', data)
     if (res.data) {
       dispatch(userSlice.actions.handleSignIn(res.data))
-      window.location.reload(false)
+      // window.location.reload(false)
     }
   } catch (err) {
     dispatch(userSlice.actions.signInFailure())
