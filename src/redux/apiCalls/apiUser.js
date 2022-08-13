@@ -8,6 +8,10 @@ const requestHandleSignIn = async (dispatch, data) => {
     const res = await publicRequest.post('/api/author/login', data)
     if (res.data) {
       dispatch(userSlice.actions.handleSignIn(res.data))
+      //Strick
+      setTimeout(() => {
+        window.location.reload(false)
+      }, 200)
       // window.location.reload(false)
     }
   } catch (err) {
