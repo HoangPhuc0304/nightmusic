@@ -101,7 +101,7 @@ const AngleLeftStyle = styled.div`
   display: none;
 
   @media only screen and (min-width: ${MAX_MOBILE +
-    1}px) and (max-width: ${MAX_TABLET}px) {
+  1}px) and (max-width: ${MAX_TABLET}px) {
     width: 250px;
   }
 
@@ -146,7 +146,7 @@ const AngleLeftStyleMobile = styled.div`
   display: none;
 
   @media only screen and (min-width: ${MAX_MOBILE +
-    1}px) and (max-width: ${MAX_TABLET}px) {
+  1}px) and (max-width: ${MAX_TABLET}px) {
     width: 250px;
   }
 
@@ -191,7 +191,7 @@ const AngleRightStyle = styled.div`
   display: none;
 
   @media only screen and (min-width: ${MAX_MOBILE +
-    1}px) and (max-width: ${MAX_TABLET}px) {
+  1}px) and (max-width: ${MAX_TABLET}px) {
     width: 250px;
   }
 
@@ -243,11 +243,23 @@ function SongSetting(props) {
     dispatch(songSlice.actions.addNextBroadcast(item))
   }
   const handleRemoveSongFromLibrary = (item) => {
-    message.success('Remove a song successfully')
+    message.success({
+      content: 'Remove a song successfully',
+      style: {
+        marginTop: '48px'
+      },
+      duration: 4,
+    })
     requestEditLibrary(dispatch, libraryId, item, 'delete')
   }
   const handleAddSongToLibrary = (item) => {
-    message.success('Add a song to library successfully')
+    message.success({
+      content: 'Add a song to library successfully',
+      style: {
+        marginTop: '48px'
+      },
+      duration: 4,
+    })
     requestEditLibrary(dispatch, libraryId, item, 'add')
   }
   const handleSetting = (isAtControl, isAtMobile) => {

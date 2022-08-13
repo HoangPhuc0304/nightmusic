@@ -100,7 +100,13 @@ function User() {
     user.country !== formData.country &&
       data.append('country', formData.country)
     requestEditUser(dispatch, data)
-    message.success('Update your information successfully')
+    message.success({
+      content: 'Update your information successfully',
+      style: {
+        marginTop: '48px'
+      },
+      duration: 4,
+    })
     setDisabled(true)
   }
 

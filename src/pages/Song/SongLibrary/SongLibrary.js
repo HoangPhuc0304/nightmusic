@@ -16,6 +16,7 @@ import {
   requestGetLibrary,
 } from '../../../redux/apiCalls/apiLibrary'
 import { requestUpdateSong } from '../../../redux/apiCalls/apiSong'
+import { Link } from 'react-router-dom'
 
 function SongLibrary() {
   const libraryId = useSelector((state) => state.library.id)
@@ -73,7 +74,7 @@ function SongLibrary() {
           0,
           songList.current.querySelector('.song-library-item.active')
             .offsetTop -
-            songList.current.offsetHeight / 2,
+          songList.current.offsetHeight / 2,
         )
     }, 500)
   }
@@ -111,9 +112,8 @@ function SongLibrary() {
           {songLibrary[0] ? (
             songLibrary.map((item, index) => (
               <div
-                className={`song-library-item ${
-                  currentSong && item._id === currentSong._id ? 'active' : ''
-                }`}
+                className={`song-library-item ${currentSong && item._id === currentSong._id ? 'active' : ''
+                  }`}
                 key={index}
                 ref={(element) => {
                   songItem.current[index] = element
@@ -157,11 +157,10 @@ function SongLibrary() {
                   }}
                 >
                   <i
-                    className={`bi bi-heart-fill song-item-heart ${
-                      listFavoriteSong.find((songId) => songId === item._id)
-                        ? 'active'
-                        : ''
-                    }`}
+                    className={`bi bi-heart-fill song-item-heart ${listFavoriteSong.find((songId) => songId === item._id)
+                      ? 'active'
+                      : ''
+                      }`}
                     ref={(element) => {
                       heartIcons.current[index] = element
                     }}
@@ -191,7 +190,19 @@ function SongLibrary() {
                 padding: '40% 0',
                 color: 'var(--text-color)',
               }}
-            />
+            >
+              <Link to='/initial' style={{
+                textDecoration: 'none',
+                color: 'var(--text-color)'
+              }}>
+                <i
+                  className="bi bi-plus-circle-fill"
+                  style={{
+                    fontSize: '48px', cursor: 'pointer'
+                  }}
+                ></i>
+              </Link>
+            </Empty>
           )}
         </div>
       </div>

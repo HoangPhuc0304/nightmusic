@@ -36,13 +36,24 @@ function Header() {
   const handleClickIconMenu = () => {
     user.current.classList.add('active')
     user.current.classList.remove('hiding')
+    const status = user.current.getAttribute('class').includes('active')
+    if (status) {
+      document.body.style.position = 'fixed'
+    } else {
+      document.body.style.removeProperty('position')
+    }
   }
   const handleClickIconClose = () => {
     user.current.classList.add('hiding')
     setTimeout(() => {
       user.current.classList.remove('active')
+      const status = user.current.getAttribute('class').includes('active')
+      if (status) {
+        document.body.style.position = 'fixed'
+      } else {
+        document.body.style.removeProperty('position')
+      }
     }, 300)
-    // document.getElementById('footer').style.zIndex = "5"
   }
   const handleDisableMenu = () => {
     const status = user.current.getAttribute('class').includes('active')
@@ -246,11 +257,10 @@ function Header() {
                     {(currentUser && currentUser.name) || currentUser.username}
                   </p>
                   <i
-                    className={`${
-                      accountTable
-                        ? 'bi bi-caret-up-fill'
-                        : 'bi bi-caret-down-fill'
-                    } user-setting`}
+                    className={`${accountTable
+                      ? 'bi bi-caret-up-fill'
+                      : 'bi bi-caret-down-fill'
+                      } user-setting`}
                   ></i>
                   {accountTable && (
                     <div className="header-account">

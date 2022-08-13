@@ -44,10 +44,14 @@
     .slider-frame {
       position: absolute;
       bottom: 15%;
-      left: 50%;
-      margin-left: -233px;
+      // left: 50%;
+      // margin-left: -233px;
+      left: 0;
+      right: 0;
+      width: 100%;
       display: flex;
       flex-direction: row;
+      justify-content: center;
       list-style-type: none;
       .slider-btn {
         width: 15px;
@@ -57,6 +61,12 @@
         margin: 0 8px;
         border: 1px solid #000;
         cursor: pointer;
+
+        @media only screen and (max-width: 739px) {
+          width: 14px;
+          height: 14px;
+          margin: 0 4px;
+        }
 
         &.active {
           background-color: var(--primary-color);
