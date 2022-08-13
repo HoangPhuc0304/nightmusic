@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       {/* basename='/nightmusic-client' */}
-      <Router basename="/nightmusic-client">
+      <Router>
         <Header />
         {acceptAccess ? (
           <Routes>

@@ -1,3 +1,4 @@
+const logo = 'https://nightmusic-api.herokuapp.com/layout/header_icon.png'
 const songNavHeaderAPI = [
   {
     id: 1,
@@ -67,4 +68,4 @@ const songNavBodyAPI = [
   },
 ]
 
-export { songNavHeaderAPI, songNavBodyAPI }
+export { songNavHeaderAPI, songNavBodyAPI, logo }

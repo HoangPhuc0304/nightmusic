@@ -28,8 +28,8 @@ $font-heading: 1.75rem;
   animation: $style $effect $time;
 }
 @mixin icon-effect {
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+  transition: all 0.1s ease;
   cursor: pointer;
 }
 @keyframes FadeIn {
