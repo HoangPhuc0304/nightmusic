@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import imageChart, { imageCloud } from '../../../resources/images/imageChart'
 import 'antd/dist/antd.css'
-import { Empty } from 'antd'
+import { Empty, Spin } from 'antd'
 import { Space, Table, Tag } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { requestGetSongChart } from '../../../redux/apiCalls/apiSong'
@@ -372,6 +372,9 @@ function SongChart() {
           </div> */}
         </div>
       </div>
+      {!chartTime[0] && <div className='loadingEffect'>
+        <Spin size="large" tip="Loading..."></Spin>
+      </div>}
       <div className="chart-clouds">
         {imageCloud.map((image) => (
           <img

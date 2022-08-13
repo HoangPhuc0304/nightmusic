@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Spin } from 'antd'
 import ThumbnailVideo from '../../../components/ThumbnailVideo/ThumbnailVideo'
 import {
   requestGetAllVideos,
@@ -39,6 +40,9 @@ function SongMV() {
           </div>
         </div>
       </div>
+      {!listMV[0] && <div className='loadingEffect'>
+        <Spin size="large" tip="Loading..."></Spin>
+      </div>}
     </div>
   )
 }

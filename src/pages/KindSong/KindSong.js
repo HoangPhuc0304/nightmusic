@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import 'antd/dist/antd.css'
-import { Empty } from 'antd'
+import { Empty, Spin } from 'antd'
 import {
   changeTimeFromSecondToDuration,
   changeTimeFromSecondToString,
@@ -13,7 +13,6 @@ import songSlice, {
   getListFavoriteSong,
 } from '../../redux/slices/songSlice'
 import layoutSlice, {
-  displayLoading,
   getRequestHideSetting,
 } from '../../redux/slices/layoutSlice'
 import SongSetting from '../../components/SongSetting/SongSetting'
@@ -39,6 +38,7 @@ function KindSong() {
   const isTheFirstTime = useRef(true)
   const [indexSelect, setIndexSelect] = useState(-1)
   const [breakpoint, setBreakpoint] = useState(window.innerWidth)
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
@@ -136,9 +136,13 @@ function KindSong() {
     }
   }, [currentSong])
   useEffect(() => {
-    dispatch(displayLoading(true))
     requestGetPlaylist(dispatch, kind)
-    dispatch(displayLoading(false))
+    if (!playlist[0]) {
+      setIsLoading(true)
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 2000)
+    }
   }, [])
   useEffect(() => {
     playlist.songs && setSongList(playlist.songs)
@@ -177,8 +181,8 @@ function KindSong() {
                 breakpoint >= MAX_MOBILE
                   ? { backgroundColor: `${playlist.color}` }
                   : {
-                      background: `linear-gradient(${playlist.color},var(--dark-color))`,
-                    }
+                    background: `linear-gradient(${playlist.color},var(--dark-color))`,
+                  }
               }
             >
               <div
@@ -205,15 +209,12 @@ function KindSong() {
                     </span>
                     <p>
                       <i className="bi bi-clock-fill"></i>
-                      {`${
-                        new Date(playlist.updatedAt).toUTCString().split(' ')[2]
-                      } ${
-                        new Date(playlist.updatedAt).toUTCString().split(' ')[3]
-                      } · ${
-                        playlist.duration > 60
+                      {`${new Date(playlist.updatedAt).toUTCString().split(' ')[2]
+                        } ${new Date(playlist.updatedAt).toUTCString().split(' ')[3]
+                        } · ${playlist.duration > 60
                           ? changeTimeFromSecondToDuration(playlist.duration)
                           : ''
-                      }`}
+                        }`}
                     </p>
                   </div>
                 </>
@@ -233,15 +234,12 @@ function KindSong() {
                     </span>
                     <p>
                       <i className="bi bi-clock-fill"></i>
-                      {`${
-                        new Date(playlist.updatedAt).toUTCString().split(' ')[2]
-                      } ${
-                        new Date(playlist.updatedAt).toUTCString().split(' ')[3]
-                      } · ${
-                        playlist.duration > 60
+                      {`${new Date(playlist.updatedAt).toUTCString().split(' ')[2]
+                        } ${new Date(playlist.updatedAt).toUTCString().split(' ')[3]
+                        } · ${playlist.duration > 60
                           ? changeTimeFromSecondToDuration(playlist.duration)
                           : ''
-                      }`}
+                        }`}
                     </p>
                   </div>
                 </div>
@@ -282,11 +280,10 @@ function KindSong() {
                   <tbody className="song-page-list-body">
                     {songList.map((item, index) => (
                       <tr
-                        className={`song-page-item ${
-                          currentSong && currentSong._id === item._id
-                            ? ' active'
-                            : ''
-                        }`}
+                        className={`song-page-item ${currentSong && currentSong._id === item._id
+                          ? ' active'
+                          : ''
+                          }`}
                         key={index}
                         ref={songItem}
                         onClick={() => handleClickSong(item)}
@@ -333,13 +330,12 @@ function KindSong() {
                           }}
                         >
                           <i
-                            className={`bi bi-heart-fill song-item-heart ${
-                              favoriteListSong.find(
-                                (songId) => songId === item._id,
-                              )
-                                ? 'active'
-                                : ''
-                            }`}
+                            className={`bi bi-heart-fill song-item-heart ${favoriteListSong.find(
+                              (songId) => songId === item._id,
+                            )
+                              ? 'active'
+                              : ''
+                              }`}
                             ref={(element) => {
                               heartIcons.current[index] = element
                             }}
@@ -381,15 +377,22 @@ function KindSong() {
             </div>
           </div>
         ) : (
-          <Empty
-            image={Empty.PRESENTED_IMAGE_SIMPLE}
-            style={{
-              width: '100%',
-              marginTop: '2rem',
-              textAlign: 'center',
-              color: 'var(--text-color)',
-            }}
-          />
+          <>
+            {isLoading
+              ? <div className='loadingEffect' style={{ color: 'var(--text-color)' }}>
+                <Spin size="large" tip="Loading..."></Spin>
+              </div>
+              : <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                style={{
+                  width: '100%',
+                  marginTop: '2rem',
+                  textAlign: 'center',
+                  color: 'var(--text-color)',
+                }}
+              />
+            }
+          </>
         )}
       </div>
     </>

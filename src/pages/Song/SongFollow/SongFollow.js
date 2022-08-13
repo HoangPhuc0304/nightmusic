@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import 'antd/dist/antd.css'
-import { Empty } from 'antd'
+import { Empty, Spin } from 'antd'
 import { requestGetAllSingers } from '../../../redux/apiCalls/apiSinger'
 
 function SongFollow() {
@@ -77,6 +77,9 @@ function SongFollow() {
           />
         )}
       </div>
+      {!singerList[0] && <div className='loadingEffect'>
+        <Spin size="large" tip="Loading..."></Spin>
+      </div>}
     </div>
   )
 }

@@ -20,13 +20,11 @@ import VideoDetail from './pages/MusicVideo/VideoDetail'
 import Book from './pages/Book/Book'
 import Contact from './pages/Contact/Contact'
 import PhotoBackground from './pages/PhotoBackground/PhotoBackground'
-import Loading from './components/Loading/Loading'
 import Initial from './pages/Initial/Initial'
 import User from './pages/User/User'
 
 function App() {
   const acceptAccess = useSelector((state) => state.user.acceptAccess)
-  const isLoading = useSelector((state) => state.layout.isLoading)
   const songCurrent = useSelector((state) => state.song.songCurrent)
   const songCurrentPlaylist = useSelector(
     (state) => state.song.songCurrentPlaylist,
@@ -66,7 +64,6 @@ function App() {
         )}
         {acceptAccess && <SelectTheme />}
         {(songCurrent !== -1 || songCurrentPlaylist !== -1) && <Control />}
-        {isLoading && <Loading />}
         <Footer />
       </Router>
     </div>

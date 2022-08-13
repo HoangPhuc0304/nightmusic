@@ -6,7 +6,6 @@ import 'antd/dist/antd.css'
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons'
 import { Form, Input, Button, Select, DatePicker, Tag } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { displayLoading } from '../../redux/slices/layoutSlice'
 import { requestCreateLibrary } from '../../redux/apiCalls/apiLibrary'
 const { RangePicker } = DatePicker
 const { TextArea } = Input
@@ -33,29 +32,23 @@ function Initial() {
       type: types,
       singer: singers,
     })
-    dispatch(displayLoading(true))
+    
     setTimeout(() => {
       navigate('/', { replace: true })
-      dispatch(displayLoading(false))
     }, 2000)
   }
   const handleSkip = (e) => {
     e.preventDefault()
-    requestCreateLibrary(dispatch, {
-      type: [],
-      singer: [],
-    })
-    dispatch(displayLoading(true))
-    setTimeout(() => {
-      navigate('/', { replace: true })
-      dispatch(displayLoading(false))
-    }, 2000)
+    navigate('/', { replace: true })
   }
 
   useEffect(() => {
     !requestType[0] && requestGetAllInfoPlaylists(dispatch)
     !requestSingers[0] && requestGetAllSingers(dispatch)
   }, [])
+
+  console.log(types)
+  console.log(singers)
 
   return (
     <div id="initial">

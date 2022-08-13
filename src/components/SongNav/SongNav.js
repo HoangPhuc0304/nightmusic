@@ -39,9 +39,8 @@ function SongNav() {
         {songNavHeaderAPI.map((item) => (
           <Link to={item.link} key={item.id} style={{ textDecoration: 'none' }}>
             <div
-              className={`song-nav-item ${
-                item.link === params.pathname ? 'active' : ''
-              }`}
+              className={`song-nav-item ${item.link === params.pathname ? 'active' : ''
+                }`}
             >
               <i className={item.icon}></i>
               <span className="song-nav-name">{item.name}</span>
@@ -232,10 +231,12 @@ function SongNav() {
           </div>
         </div>
       </div>
-      <div className="song-nav-create">
-        <i className="bi bi-plus-lg"></i>
-        <span>Create new playlist</span>
-      </div>
+      <Link to="/initial" style={{ textDecoration: 'none' }}>
+        <div className="song-nav-create">
+          <i className="bi bi-plus-lg"></i>
+          <span>Create new playlist</span>
+        </div>
+      </Link>
     </div>
   )
 }

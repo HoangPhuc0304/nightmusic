@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   hideAllSongSetting: false,
   isMovingToAccessPage: false,
-  isLoading: false,
   songNav: false,
   weather: {},
   colorThemes: [],
@@ -19,9 +18,6 @@ const layoutSlice = createSlice({
     },
     movingToAccessPage: (state, action) => {
       state.isMovingToAccessPage = action.payload
-    },
-    displayLoading: (state, action) => {
-      state.isLoading = action.payload
     },
     getWeather: (state, action) => {
       state.weather = action.payload
@@ -40,6 +36,6 @@ const getRequestMovingToAccessPage = (state) =>
   state.layout.isMovingToAccessPage
 
 export default layoutSlice
-export const { displayLoading, getWeather, hideSongNav, getThemes } =
+export const { getWeather, hideSongNav, getThemes } =
   layoutSlice.actions
 export { getRequestHideSetting, getRequestMovingToAccessPage }

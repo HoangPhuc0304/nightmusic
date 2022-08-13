@@ -5,7 +5,7 @@ import songSlice, {
   getInformationStopBroadcast,
 } from '../../../redux/slices/songSlice'
 import 'antd/dist/antd.css'
-import { Empty } from 'antd'
+import { Empty, Spin } from 'antd'
 import { changeTimeFromSecondToString } from '../../../others/features'
 import SongSetting from '../../../components/SongSetting/SongSetting'
 import layoutSlice, {
@@ -22,16 +22,17 @@ function SongLibrary() {
   const libraryId = useSelector((state) => state.library.id)
   const songLibrary = useSelector((state) => state.library.songs)
   const listFavoriteSong = useSelector((state) => state.library.favoriteSong)
+  const isEmptyBroadcast = useSelector((state) => state.song.isEmpty)
 
   const currentSong = useSelector(getCurrentSong)
   const receiveRequestFromSetting = useSelector(getRequestHideSetting)
   const isStopBroadcast = useSelector(getInformationStopBroadcast)
-  const isEmptyBroadcast = useSelector((state) => state.song.isEmpty)
   const songCurrentPlaylist = useSelector(
     (state) => state.song.songCurrentPlaylist,
   )
 
   const [indexSelect, setIndexSelect] = useState(-1)
+  const [isLoading, setIsLoading] = useState(false)
   const songList = useRef()
   const songItem = useRef([])
   const heartIcons = useRef([])
@@ -85,9 +86,18 @@ function SongLibrary() {
       dispatch(layoutSlice.actions.requestHideSongSetting(false))
     }
   }, [receiveRequestFromSetting])
+
   useEffect(() => {
     !songLibrary[0] && requestGetLibrary(dispatch)
+    setIsLoading(true)
+    const timeOut = setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
     scrollToActiveSong()
+
+    return () => {
+      clearTimeout(timeOut)
+    }
   }, [])
 
   return (
@@ -180,30 +190,37 @@ function SongLibrary() {
                 </div>
               </div>
             ))
-          ) : (
-            <Empty
-              image={Empty.PRESENTED_IMAGE_SIMPLE}
-              style={{
-                width: '100%',
-                margin: 'auto',
-                textAlign: 'center',
-                padding: '40% 0',
-                color: 'var(--text-color)',
-              }}
-            >
-              <Link to='/initial' style={{
-                textDecoration: 'none',
-                color: 'var(--text-color)'
-              }}>
-                <i
-                  className="bi bi-plus-circle-fill"
+          ) : <>
+            {isLoading
+              ? <div className='loadingEffect'>
+                <Spin size="large" tip="Loading..."></Spin>
+              </div>
+              : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
                   style={{
-                    fontSize: '48px', cursor: 'pointer'
+                    width: '100%',
+                    margin: 'auto',
+                    textAlign: 'center',
+                    padding: '40% 0',
+                    color: 'var(--text-color)',
                   }}
-                ></i>
-              </Link>
-            </Empty>
-          )}
+                >
+                  <Link to='/initial' style={{
+                    textDecoration: 'none',
+                    color: 'var(--text-color)'
+                  }}>
+                    <i
+                      className="bi bi-plus-circle-fill"
+                      style={{
+                        fontSize: '48px', cursor: 'pointer'
+                      }}
+                    ></i>
+                  </Link>
+                </Empty>
+              )}
+          </>
+          }
         </div>
       </div>
     </div>

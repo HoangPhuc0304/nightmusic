@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Spin } from 'antd'
 import { requestGetAllInfoPlaylists } from '../../../redux/apiCalls/apiPlaylist'
-import { displayLoading } from '../../../redux/slices/layoutSlice'
 import './SongSearch.scss'
 
 function SongSearch() {
@@ -25,7 +25,6 @@ function SongSearch() {
   //CALL API
   useEffect(() => {
     if (!allPlaylists[0]) {
-      dispatch(displayLoading(true))
       requestGetAllInfoPlaylists(dispatch)
     }
   }, [])
@@ -33,7 +32,6 @@ function SongSearch() {
   useEffect(() => {
     setSongSearchTop(allPlaylists.slice(0, 2))
     setSongSearchList(allPlaylists.slice(2))
-    dispatch(displayLoading(false))
   }, [allPlaylists])
 
   return (
@@ -105,6 +103,9 @@ function SongSearch() {
           </div>
         </div>
       </div>
+      {!songSearchList[0] && <div className='loadingEffect'>
+        <Spin size="large" tip="Loading..."></Spin>
+      </div>}
     </div>
   )
 }
