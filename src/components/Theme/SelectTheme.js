@@ -10,6 +10,7 @@ function SelectTheme() {
   const themeIdol = useSelector((state) => state.layout.idolThemes)
   const libraryId = useSelector((state) => state.library.id)
   const themeUser = useSelector((state) => state.library.theme)
+  const [breakpoint, setBreakpoint] = useState(window.innerWidth)
 
   const [active, setActive] = useState(null)
   const [pageTheme, setPageTheme] = useState('color')
@@ -36,7 +37,9 @@ function SelectTheme() {
       .style.setProperty(
         '--theme-background',
         item.image
-          ? `linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('${item.image}')`
+          ? (breakpoint < 739
+            ? `linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('${item.image}') center`
+            : `linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('${item.image}')`)
           : item.styleColor,
       )
     setActive((preId) => {
@@ -80,6 +83,16 @@ function SelectTheme() {
 
   useEffect(() => {
     !themeColor[0] && !themeIdol[0] && requestGetAllThemes(dispatch)
+  }, [])
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setBreakpoint(window.innerWidth)
+    })
+    return () => {
+      window.removeEventListener('resize', () => {
+        setBreakpoint(window.innerWidth)
+      })
+    }
   }, [])
 
   return (

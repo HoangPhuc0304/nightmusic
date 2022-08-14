@@ -372,7 +372,7 @@ function SongChart() {
           </div> */}
         </div>
       </div>
-      {!chartTime[0] && <div className='loadingEffect'>
+      {!songList[0] && <div className='loadingEffect'>
         <Spin size="large" tip="Loading..."></Spin>
       </div>}
       <div className="chart-clouds">

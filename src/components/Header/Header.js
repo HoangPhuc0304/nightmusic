@@ -36,23 +36,23 @@ function Header() {
   const handleClickIconMenu = () => {
     user.current.classList.add('active')
     user.current.classList.remove('hiding')
-    const status = user.current.getAttribute('class').includes('active')
-    if (status) {
-      document.body.style.position = 'fixed'
-    } else {
-      document.body.style.removeProperty('position')
-    }
+    // const status = user.current.getAttribute('class').includes('active')
+    // if (status) {
+    //   document.body.style.position = 'fixed'
+    // } else {
+    //   document.body.style.removeProperty('position')
+    // }
   }
   const handleClickIconClose = () => {
     user.current.classList.add('hiding')
     setTimeout(() => {
       user.current.classList.remove('active')
-      const status = user.current.getAttribute('class').includes('active')
-      if (status) {
-        document.body.style.position = 'fixed'
-      } else {
-        document.body.style.removeProperty('position')
-      }
+      // const status = user.current.getAttribute('class').includes('active')
+      // if (status) {
+      //   document.body.style.position = 'fixed'
+      // } else {
+      //   document.body.style.removeProperty('position')
+      // }
     }, 300)
   }
   const handleDisableMenu = () => {
@@ -378,11 +378,6 @@ function Header() {
                   </div>
                   <i
                     className="bi bi-dash-lg dash-divide"
-                    style={{
-                      color: '#8289a1',
-                      fontSize: '2rem',
-                      padding: '0 1.5rem',
-                    }}
                   ></i>
                 </div>
                 <div className="user-mobile-bottom">

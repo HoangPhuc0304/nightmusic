@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ReactPlayer from 'react-player'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,12 +24,27 @@ function VideoDetail() {
   const libraryId = useSelector((state) => state.library.id)
   const listLike = useSelector((state) => state.library.favoriteVideo)
   const listDislike = useSelector((state) => state.library.dislikedVideo)
+
+  const likeRef = useRef()
+  const dislikeRef = useRef()
   let starRating
 
   const handleLikeClick = (item) => {
+    likeRef.current.classList.toggle('active')
+    const statusLike = likeRef.current.getAttribute('class').includes('active')
+    const statusDislike = dislikeRef.current.getAttribute('class').includes('active')
+    if (statusLike) {
+      statusDislike && dislikeRef.current.classList.remove('active')
+    }
     requestEditLibrary(dispatch, libraryId, item, 'like-video')
   }
   const handleDislikeClick = (item) => {
+    dislikeRef.current.classList.toggle('active')
+    const statusLike = likeRef.current.getAttribute('class').includes('active')
+    const statusDislike = dislikeRef.current.getAttribute('class').includes('active')
+    if (statusDislike) {
+      statusLike && likeRef.current.classList.remove('active')
+    }
     requestEditLibrary(dispatch, libraryId, item, 'dislike-video')
   }
   const handleClick = (item) => {
@@ -73,9 +88,10 @@ function VideoDetail() {
                         className={
                           listLike.find((item) => item === mvList[0]._id)
                             ? 'bi bi-hand-thumbs-up-fill active'
-                            : 'bi bi-hand-thumbs-up'
+                            : 'bi bi-hand-thumbs-up-fill'
                         }
                         onClick={() => handleLikeClick(mvList[0])}
+                        ref={likeRef}
                       ></i>
                       Like
                     </span>
@@ -84,9 +100,10 @@ function VideoDetail() {
                         className={
                           listDislike.find((item) => item === mvList[0]._id)
                             ? 'bi bi-hand-thumbs-down-fill active'
-                            : 'bi bi-hand-thumbs-down'
+                            : 'bi bi-hand-thumbs-down-fill'
                         }
                         onClick={() => handleDislikeClick(mvList[0])}
+                        ref={dislikeRef}
                       ></i>
                       Dislike
                     </span>

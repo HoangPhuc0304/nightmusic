@@ -1,4 +1,4 @@
-@import '../../common/config.scss';
+@import "../../common/config.scss";
 
 .video-page {
   margin-top: 46px;
@@ -10,6 +10,7 @@
   display: flex;
   z-index: 1;
   user-select: none;
+  padding-top: 3rem;
   @include animation(fadeLeft, ease, 0.3s);
 
   @media only screen and (min-width: 740px) and (max-width: 1023px) {
@@ -19,6 +20,7 @@
   @media only screen and (max-width: 739px) {
     margin-left: 0;
     width: 100%;
+    height: calc(100vh - 46px);
   }
 
   &-background {
@@ -35,10 +37,10 @@
   }
   &-watch {
     position: relative;
-    margin: 2rem 3rem;
+    margin: 0 3rem;
 
     @media only screen and (max-width: 739px) {
-      margin: 2rem 0;
+      margin: 0 0;
     }
   }
   &-main {
@@ -55,6 +57,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     grid-gap: 3rem;
+
+    @media only screen and (max-width: 739px) {
+      padding: 0;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 2rem;
+    }
   }
 
   .video-information {

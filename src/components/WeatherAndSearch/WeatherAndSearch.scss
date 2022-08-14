@@ -1,9 +1,12 @@
-@import '../../common/config.scss';
+@import "../../common/config.scss";
 
 .header-virtual {
   position: relative;
   height: 92%;
   display: flex;
+  @media only screen and (max-width: 739px) {
+    width: 80%;
+  }
   .song-header-nav {
     height: 100%;
     text-align: center;
@@ -76,7 +79,7 @@
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: -10px;
       left: 5%;
@@ -88,7 +91,7 @@
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: -1rem;
       left: 0;
@@ -150,8 +153,8 @@
         min-width: 200px;
       }
       @media only screen and (max-width: 739px) {
-        width: 90%;
-        min-width: 270px;
+        width: fit-content;
+        min-width: fit-content;
       }
     }
     @media only screen and (min-width: 740px) and (max-width: 1023px) {
@@ -257,7 +260,7 @@
         margin: 2px 0;
 
         &::before {
-          content: 'Song · ';
+          content: "Song · ";
         }
       }
     }

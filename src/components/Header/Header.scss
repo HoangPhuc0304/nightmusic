@@ -1,4 +1,4 @@
-@import '../../common/config.scss';
+@import "../../common/config.scss";
 
 #header {
   position: fixed;
@@ -92,7 +92,14 @@
 
       .dash-divide {
         margin: 1.2rem 0;
-        padding: 0;
+        color: #8289a1;
+        font-size: 2rem;
+        padding: 0 1.5rem;
+
+        @media only screen and (max-width: 739px) {
+          margin: 0.5rem 0;
+          padding: 0;
+        }
       }
     }
 
@@ -120,8 +127,8 @@
         margin: 0 0.5rem;
 
         @media only screen and (max-width: 739px) {
-          font-size: 20px;
-          line-height: 40px;
+          font-size: 16px;
+          line-height: 32px;
         }
 
         i {
@@ -138,7 +145,7 @@
           }
 
           @media only screen and (max-width: 739px) {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
         }
       }
@@ -148,7 +155,7 @@
         margin: 0 0.5rem;
 
         @media only screen and (max-width: 739px) {
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
         &:hover {
           opacity: 0.8;
@@ -186,8 +193,8 @@
           border-radius: 50%;
 
           @media only screen and (max-width: 739px) {
-            height: 6rem;
-            width: 6rem;
+            height: 5rem;
+            width: 5rem;
           }
         }
         .user-name {
@@ -246,6 +253,9 @@
         }
         &:hover {
           background-color: rgba(0, 0, 0, 0.5);
+          @media only screen and (max-width: 739px) {
+            background-color: initial;
+          }
         }
         i {
           color: var(--text-color);
@@ -254,6 +264,7 @@
 
           @media only screen and (max-width: 739px) {
             font-size: 20px !important;
+            margin: 0 10px 0 5px !important;
           }
         }
       }
@@ -376,7 +387,7 @@
     @media only screen and (max-width: 739px) {
       display: inline-block;
       color: var(--text-color);
-      padding: 11px;
+      padding: 0 11px;
       font-size: 24px;
       -webkit-text-stroke: 1px;
 
