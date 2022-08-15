@@ -30,7 +30,8 @@
     will-change: scroll-position;
 
     @media only screen and (max-width: 739px) {
-      max-height: calc(100vh - 46px - 72px);
+      max-height: calc(100% - 48px);
+      height: calc(100% - 48px);
     }
   }
   .form-header {

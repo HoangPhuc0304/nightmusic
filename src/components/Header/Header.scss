@@ -14,6 +14,7 @@
   justify-content: space-between;
   @media only screen and (max-width: 739px) {
     z-index: 3;
+    padding: 0 6px;
   }
 
   .nav {
@@ -128,7 +129,7 @@
 
         @media only screen and (max-width: 739px) {
           font-size: 16px;
-          line-height: 32px;
+          line-height: 28px;
         }
 
         i {
@@ -145,7 +146,7 @@
           }
 
           @media only screen and (max-width: 739px) {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
           }
         }
       }

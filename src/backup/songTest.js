@@ -4664,6 +4664,34 @@
 //         "length": 245,
 //         "plays": 290,
 //         "likes": 48
+//     },
+//     {
+//         "link": "https://www.youtube.com",
+//         "img": "https://nightmusic-api.herokuapp.com/api/resources/images/server/img_huasekhongkhoc.jpg",
+//         "avatar":
+//             "https://nightmusic-api.herokuapp.com/api/resources/images/server/avatar_huasekhongkhoc.jpg",
+//         "song": "Hứa sẽ không khóc",
+//         "name": ["Chau Kiet Luan", "Ngu Nghuyet Thien A Tin"],
+//         "type": ["c-pop", "pop", "chill"],
+//         "audio":
+//             "https://nightmusic-api.herokuapp.com/api/resources/audios/huasekhongkhoc.mp3",
+//         "length": 222,
+//         "plays": 0,
+//         "likes": 0
+//     },
+//     {
+//         "link": "https://www.youtube.com",
+//         "img": "https://nightmusic-api.herokuapp.com/api/resources/images/server/img_lamsaovay.jpg",
+//         "avatar":
+//             "https://nightmusic-api.herokuapp.com/api/resources/images/server/avatar_lamsaovay.jpg",
+//         "song": "Làm sao vậy",
+//         "name": ["Chau Hung Triet"],
+//         "type": ["c-pop"],
+//         "audio":
+//             "https://nightmusic-api.herokuapp.com/api/resources/audios/lamsaovay.mp3",
+//         "length": 321,
+//         "plays": 0,
+//         "likes": 0
 //     }
 // ]
 
