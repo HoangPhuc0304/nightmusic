@@ -121,49 +121,50 @@ function WeatherAndSearch() {
             setTextSearch('')
           }}
         ></i>
-      </div>
-      {allSong[0] && textSearch && !checkBlur && (
-        <div className="search-song-box">
-          {Array.from(getDataSearch(allSong, textSearch))[0] ? (
-            Array.from(getDataSearch(allSong, textSearch)).map((song) => (
-              <div
-                key={song._id}
-                className="search-song-item"
-                onClick={() => handleClickSong(song)}
-              >
-                <div className="search-song-info">
-                  <img
-                    src={song.img}
-                    alt={song.song}
-                    className="search-song-photo"
-                  />
-                  <div className="search-song-decoration">
-                    <h3>{song.song}</h3>
-                    <p>
-                      {song.name.map((item, index) => {
-                        if (index === song.name.length - 1) {
-                          return item
-                        }
-                        return item + ', '
-                      })}
-                    </p>
+        {allSong[0] && textSearch && !checkBlur && (
+          <div className="search-song-box">
+            {Array.from(getDataSearch(allSong, textSearch))[0] ? (
+              Array.from(getDataSearch(allSong, textSearch)).map((song) => (
+                <div
+                  key={song._id}
+                  className="search-song-item"
+                  onClick={() => handleClickSong(song)}
+                >
+                  <div className="search-song-info">
+                    <img
+                      src={song.img}
+                      alt={song.song}
+                      className="search-song-photo"
+                    />
+                    <div className="search-song-decoration">
+                      <h3>{song.song}</h3>
+                      <p>
+                        {song.name.map((item, index) => {
+                          if (index === song.name.length - 1) {
+                            return item
+                          }
+                          return item + ', '
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="search-song-type">
+                    {song.type.map((item, index) => (
+                      <span key={index}>{item}</span>
+                    ))}
                   </div>
                 </div>
-                <div className="search-song-type">
-                  {song.type.map((item, index) => (
-                    <span key={index}>{item}</span>
-                  ))}
-                </div>
-              </div>
-            ))
-          ) : (
-            <p className="search-song-no-result">
-              <i className="bi bi-search"></i>
-              No results for "{textSearch}"
-            </p>
-          )}
-        </div>
-      )}
+              ))
+            ) : (
+              <p className="search-song-no-result">
+                <i className="bi bi-search"></i>
+                No results for "{textSearch}"
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+
     </div>
   )
 }

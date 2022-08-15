@@ -66,20 +66,11 @@ function SongFollow() {
             </ul>
           </div>
         ) : (
-          <Empty
-            image={Empty.PRESENTED_IMAGE_SIMPLE}
-            style={{
-              width: '100%',
-              marginTop: '2rem',
-              textAlign: 'center',
-              color: 'var(--text-color)',
-            }}
-          />
+          <div className='loadingEffect'>
+            <Spin size="large" tip="Loading..."></Spin>
+          </div>
         )}
       </div>
-      {!singerList[0] && <div className='loadingEffect'>
-        <Spin size="large" tip="Loading..."></Spin>
-      </div>}
     </div>
   )
 }

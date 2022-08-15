@@ -20,7 +20,7 @@
     // animation: FadeIn ease-in 0.5s;
     @include animation(FadeIn, ease-in, 0.3s);
     align-self: center;
-    max-height: calc(100vh - 32px);
+    max-height: calc(100vh - 46px - 32px);
     flex-shrink: 1;
     flex-direction: column;
     overflow: auto;

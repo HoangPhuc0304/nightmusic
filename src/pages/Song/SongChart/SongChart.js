@@ -288,7 +288,7 @@ function SongChart() {
           </p>
         )}
         <div className="chart-container">
-          {songList[0] ? (
+          {songList[0] && (
             <Table
               columns={chartList}
               dataSource={songList.map((song, index) => ({
@@ -304,16 +304,6 @@ function SongChart() {
                 likes: song.likes,
                 status: song.status,
               }))}
-            />
-          ) : (
-            <Empty
-              image={Empty.PRESENTED_IMAGE_SIMPLE}
-              style={{
-                width: '100%',
-                marginTop: '2rem',
-                textAlign: 'center',
-                color: 'var(--text-color)',
-              }}
             />
           )}
 

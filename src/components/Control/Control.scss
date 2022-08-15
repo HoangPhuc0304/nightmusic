@@ -1,4 +1,4 @@
-@import '../../common/config.scss';
+@import "../../common/config.scss";
 .control {
   position: fixed;
   bottom: 0;
@@ -37,8 +37,16 @@
     display: flex;
 
     @media only screen and (max-width: 739px) {
-      flex-direction: column;
+      height: 100%;
       padding: 0 1rem;
+      flex-direction: column;
+      flex-shrink: 1;
+      flex-direction: column;
+      overflow: auto;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+      justify-content: flex-start;
+      will-change: scroll-position;
     }
   }
 
@@ -313,7 +321,7 @@
           border-radius: 20px;
           background-color: var(--text-color);
           &::after {
-            content: '';
+            content: "";
             position: absolute;
             display: none;
             top: 50%;
@@ -484,7 +492,7 @@
         border-radius: 20px;
         background-color: var(--text-color);
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           display: none;
           top: 50%;
@@ -744,7 +752,7 @@
         border-radius: 20px;
         background-color: var(--text-color);
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           display: none;
           top: 50%;
