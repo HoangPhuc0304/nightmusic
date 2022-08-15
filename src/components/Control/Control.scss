@@ -12,10 +12,13 @@
 
   @media only screen and (max-width: 739px) {
     top: 0;
-    left: 0;
     right: 0;
-    height: 100vh;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    min-height: 100%;
     border-top: none;
+    padding: 0 1rem;
   }
 
   &.disable {
@@ -37,11 +40,11 @@
     display: flex;
 
     @media only screen and (max-width: 739px) {
+      position: relative;
+      width: 100%;
       height: 100%;
-      padding: 0 1rem;
       flex-direction: column;
       flex-shrink: 1;
-      flex-direction: column;
       overflow: auto;
       overscroll-behavior: contain;
       scroll-behavior: smooth;
@@ -525,7 +528,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0;
       font-size: 1.5rem;
       color: var(--text-color);
       cursor: pointer;
@@ -542,7 +545,7 @@
     right: 0;
 
     @media only screen and (max-width: 739px) {
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0;
       margin-right: 0;
       top: 0;
       left: 0;

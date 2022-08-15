@@ -1,4 +1,4 @@
-@import '../../common/config.scss';
+@import "../../common/config.scss";
 
 .song-page {
   margin-top: 46px;
@@ -17,13 +17,26 @@
     width: calc(100vw * 3 / 4);
   }
   @media only screen and (max-width: 739px) {
+    height: calc(100vh - 46px);
     margin-left: 0;
     width: 100%;
   }
 }
 .song-page-box {
-  height: 10%;
+  height: 100%;
   width: 100%;
+
+  @media only screen and (max-width: 739px) {
+    margin: 0 auto;
+
+    flex-shrink: 1;
+    flex-direction: column;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+    will-change: scroll-position;
+  }
   .song-page-header {
     position: relative;
     width: 100%;
@@ -108,6 +121,10 @@
   background: var(--music-color);
   padding-top: 100px;
   object-fit: cover;
+
+  @media only screen and (max-width: 739px) {
+    padding-top: 40px;
+  }
   .song-page-list {
     margin: 0 auto;
     width: 86%;
@@ -272,7 +289,7 @@
           margin: 2px 0;
 
           &::before {
-            content: 'Song · ';
+            content: "Song · ";
           }
         }
       }
