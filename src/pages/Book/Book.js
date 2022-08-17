@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import imageBook from '../../resources/images/imageBook'
 import BookList from '../../components/BookList/BookList'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Book() {
   const [imageHead, setImageHead] = useState(imageBook[0])
-  const navigate = useNavigate()
 
   useEffect(() => {
     const effectAction = setTimeout(() => {
@@ -21,14 +20,11 @@ function Book() {
   }, [imageHead])
   return (
     <div id="book">
-      <div
-        className="book-icon-return"
-        onClick={() => {
-          navigate(-1)
-        }}
-      >
-        <i className="bi bi-arrow-left-circle-fill"></i>
-      </div>
+      <Link to="/">
+        <div className="book-icon-return">
+          <i className="bi bi-arrow-left-circle-fill"></i>
+        </div>
+      </Link>
       <div className="book-container">
         <h3 className="book-heading">Discover singers for events in Vietnam</h3>
         <div className="book-frame">

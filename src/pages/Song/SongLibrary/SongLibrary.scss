@@ -1,4 +1,4 @@
-@import '../../../common/config.scss';
+@import "../../../common/config.scss";
 
 .song-library {
   height: 100%;
@@ -85,6 +85,7 @@
 
     @media only screen and (max-width: 739px) {
       width: 92%;
+      padding-bottom: 5rem;
       &::-webkit-scrollbar {
         display: none;
       }
@@ -161,7 +162,7 @@
           margin: 2px 0;
 
           &::before {
-            content: 'Song · ';
+            content: "Song · ";
           }
         }
       }
@@ -185,6 +186,10 @@
         &:hover {
           border-radius: 50%;
           background-color: rgba(0, 0, 0, 0.3);
+          @media only screen and (max-width: 739px) {
+            background-color: transparent;
+            @include icon-effect-mobile;
+          }
         }
         &.active {
           color: red;
@@ -200,6 +205,10 @@
         &:hover {
           border-radius: 50%;
           background-color: rgba(0, 0, 0, 0.3);
+          @media only screen and (max-width: 739px) {
+            background-color: transparent;
+            @include icon-effect-mobile
+          }
         }
       }
     }

@@ -62,6 +62,7 @@ function SongNav() {
       )
   }
   const handleRemoveLibrary = (songListId) => {
+    requestEditLibrary(dispatch, libraryId, '', 'remove-list', songListId)
     message.success({
       content: 'Remove a list successfully',
       style: {
@@ -69,7 +70,6 @@ function SongNav() {
       },
       duration: 4,
     })
-    requestEditLibrary(dispatch, libraryId, '', 'remove-list', songListId)
     // setLibrary(preLibrary => {
     //   const changedLibrary = [...preLibrary]
     //   const indexList = changedLibrary.findIndex(item => item.songListId === songListId)
@@ -81,6 +81,7 @@ function SongNav() {
     dispatch(changeCurrentSongList(currLibraryId))
   }
   const handleCleanSongList = (songListId) => {
+    requestEditLibrary(dispatch, libraryId, '', 'remove-all-song', songListId)
     message.success({
       content: 'Clean a list successfully',
       style: {
@@ -88,7 +89,6 @@ function SongNav() {
       },
       duration: 4,
     })
-    requestEditLibrary(dispatch, libraryId, '', 'remove-all-song', songListId)
   }
 
   useEffect(() => {

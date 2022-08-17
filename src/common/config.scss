@@ -27,10 +27,14 @@ $font-heading: 1.75rem;
 @mixin animation($style, $effect, $time) {
   animation: $style $effect $time;
 }
-@mixin icon-effect {
+@mixin icon-effect-mobile {
   opacity: 0.8;
   transition: all 0.1s ease;
   cursor: pointer;
+}
+@mixin disabled-link {
+  pointer-events: none;
+  cursor: default;
 }
 @keyframes FadeIn {
   from {

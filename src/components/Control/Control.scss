@@ -170,7 +170,7 @@
           font-size: 1.5rem;
         }
         &:hover {
-          @include icon-effect;
+          @include icon-effect-mobile;
         }
         &.active {
           color: red;
@@ -185,7 +185,7 @@
           display: none;
         }
         &:hover {
-          @include icon-effect;
+          @include icon-effect-mobile;
         }
       }
     }
@@ -373,7 +373,7 @@
       }
 
       &:hover {
-        @include icon-effect;
+        @include icon-effect-mobile;
       }
     }
     .control-volume {
@@ -386,7 +386,7 @@
       }
 
       &:hover {
-        @include icon-effect;
+        @include icon-effect-mobile;
       }
     }
     .volume {
@@ -423,6 +423,10 @@
         padding: 0.4rem 0.25rem;
         &:hover {
           background-color: rgba(0, 0, 0, 0.3);
+          @media only screen and (max-width: 739px) {
+            background-color: transparent;
+            @include icon-effect-mobile
+          }
         }
         &.active {
           color: rgb(229, 29, 152);
@@ -519,7 +523,7 @@
         display: none;
       }
       &:hover {
-        @include icon-effect;
+        @include icon-effect-mobile;
       }
     }
   }
@@ -533,7 +537,7 @@
       color: var(--text-color);
       cursor: pointer;
       &:hover {
-        @include icon-effect;
+        @include icon-effect-mobile;
       }
     }
   }
@@ -563,7 +567,7 @@
         padding: 0;
       }
       &:hover {
-        @include icon-effect;
+        @include icon-effect-mobile;
       }
     }
   }

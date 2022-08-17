@@ -260,7 +260,7 @@ function SongLibrary() {
           onChange={handleSelectLibrary}
         >
           {songListInfo.map((item) => (
-            <option value={item.songListId}>{item.name}</option>
+            <option key={item.songListId} value={item.songListId}>{item.name}</option>
           ))}
         </select>
       </div>

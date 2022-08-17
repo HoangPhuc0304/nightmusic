@@ -1,4 +1,4 @@
-@import '../../common/config.scss';
+@import "../../common/config.scss";
 
 .song-page {
   margin-top: 46px;
@@ -171,6 +171,9 @@
     }
     &-time {
       text-align: right;
+      @media only screen and (max-width: 739px) {
+        margin: auto 0.2rem !important;
+      }
     }
     &-setting {
       text-align: right;
@@ -264,6 +267,9 @@
         margin: auto 0.5rem;
         float: left;
         padding: 6px 0;
+        @media only screen and (max-width: 739px) {
+          margin: auto 0;
+        }
         h3 {
           font-size: $font-text;
           display: -webkit-box;
@@ -289,7 +295,7 @@
           margin: 2px 0;
 
           &::before {
-            content: 'Song · ';
+            content: "Song · ";
           }
         }
       }
@@ -303,6 +309,7 @@
     .song-item-tail {
       margin: auto 1rem;
       text-align: right;
+      // display: flex;
       .song-item-heart {
         padding: 0.5rem;
         font-size: 0/75rem;
@@ -312,6 +319,10 @@
         &:hover {
           border-radius: 50%;
           background-color: rgba(0, 0, 0, 0.3);
+          @media only screen and (max-width: 739px) {
+            background-color: transparent;
+            @include icon-effect-mobile;
+          }
         }
         &.active {
           color: red;
@@ -327,6 +338,10 @@
         &:hover {
           border-radius: 50%;
           background-color: rgba(0, 0, 0, 0.3);
+          @media only screen and (max-width: 739px) {
+            background-color: transparent;
+            @include icon-effect-mobile;
+          }
         }
       }
     }

@@ -38,7 +38,7 @@ function SongSearch() {
     <div className="song-search">
       <div className="song-search-body">
         <div className="song-kind-top">
-          <h3 className="song-kind-heading">Your top genres</h3>
+          <h3 className="song-kind-heading">Top genres</h3>
           <div className="song-kind-top-list">
             {songSearchTop.map((item, index) => (
               <Link

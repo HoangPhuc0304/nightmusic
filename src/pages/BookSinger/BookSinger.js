@@ -65,10 +65,10 @@ function BookSinger() {
   return (
     <div className="book-background">
       <div className={`book-background-box ${book.background}`}>
-        <img src={book.star_img} alt="" class="book-night-star" />
-        <img src={book.moon} alt="" class="book-moon" />
-        <img src={book.mountain} alt="" class="book-mountain" />
-        <img src={book.valley} alt="" class="book-valley" />
+        <img src={book.star_img} alt="" className="book-night-star" />
+        <img src={book.moon} alt="" className="book-moon" />
+        <img src={book.mountain} alt="" className="book-mountain" />
+        <img src={book.valley} alt="" className="book-valley" />
         <div className="book-background-singer">
           <img src={randomSinger && randomSinger.avatar} alt="" />
           <span className="book-background-shadow"></span>

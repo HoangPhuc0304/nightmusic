@@ -251,6 +251,7 @@ function SongSetting(props) {
     dispatch(songSlice.actions.addNextBroadcast(item))
   }
   const handleRemoveSongFromLibrary = (item, currentListId) => {
+    requestEditLibrary(dispatch, libraryId, item, 'delete', currentListId)
     message.success({
       content: 'Remove a song successfully',
       style: {
@@ -258,9 +259,9 @@ function SongSetting(props) {
       },
       duration: 4,
     })
-    requestEditLibrary(dispatch, libraryId, item, 'delete', currentListId)
   }
   const handleAddSongToLibrary = (item, selectedList) => {
+    requestEditLibrary(dispatch, libraryId, item, 'add', selectedList)
     message.success({
       content: 'Add a song to library successfully',
       style: {
@@ -268,7 +269,6 @@ function SongSetting(props) {
       },
       duration: 4,
     })
-    requestEditLibrary(dispatch, libraryId, item, 'add', selectedList)
   }
   const handleSetting = (isAtControl, isAtMobile) => {
     if (isAtControl) {
