@@ -1,4 +1,4 @@
-@import "../../common/config.scss";
+@import '../../common/config.scss';
 
 #book {
   width: 100%;
@@ -11,7 +11,7 @@
 
   .book-icon-return {
     position: absolute;
-    top: 18px;;
+    top: 18px;
     left: 32px;
     font-size: 32px;
     color: var(--text-color);

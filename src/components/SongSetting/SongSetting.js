@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import 'antd/dist/antd.css'
-import { message } from 'antd'
+import { message, Modal, Radio, Space } from 'antd'
 import styled from 'styled-components'
 import {
   requestEditLibrary,
@@ -10,6 +10,7 @@ import {
 import layoutSlice from '../../redux/slices/layoutSlice'
 import songSlice from '../../redux/slices/songSlice'
 import { MAX_MOBILE, MAX_TABLET } from '../../config/responsive'
+import { getAllListInfo } from '../../redux/slices/librarySlice'
 
 const AngleUpStyle = styled.a`
   width: 100%;
@@ -101,7 +102,7 @@ const AngleLeftStyle = styled.div`
   display: none;
 
   @media only screen and (min-width: ${MAX_MOBILE +
-  1}px) and (max-width: ${MAX_TABLET}px) {
+    1}px) and (max-width: ${MAX_TABLET}px) {
     width: 250px;
   }
 
@@ -146,7 +147,7 @@ const AngleLeftStyleMobile = styled.div`
   display: none;
 
   @media only screen and (min-width: ${MAX_MOBILE +
-  1}px) and (max-width: ${MAX_TABLET}px) {
+    1}px) and (max-width: ${MAX_TABLET}px) {
     width: 250px;
   }
 
@@ -191,7 +192,7 @@ const AngleRightStyle = styled.div`
   display: none;
 
   @media only screen and (min-width: ${MAX_MOBILE +
-  1}px) and (max-width: ${MAX_TABLET}px) {
+    1}px) and (max-width: ${MAX_TABLET}px) {
     width: 250px;
   }
 
@@ -222,8 +223,15 @@ const AngleRightStyle = styled.div`
 `
 function SongSetting(props) {
   const libraryId = useSelector((state) => state.library.id)
+  const currentListId = useSelector(
+    (state) => state.library.currentList.songListId,
+  )
+  const songListInfo = useSelector(getAllListInfo)
   const [notice, setNotice] = useState('')
   const [icon, setIcon] = useState('bi bi-files')
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false)
+  const [selectedList, setSelectedList] = useState(songListInfo[0].songListId)
+
   const dispatch = useDispatch()
 
   const changeCopyIcon = (e) => {
@@ -242,25 +250,25 @@ function SongSetting(props) {
   const handleNextBroadcast = (item) => {
     dispatch(songSlice.actions.addNextBroadcast(item))
   }
-  const handleRemoveSongFromLibrary = (item) => {
+  const handleRemoveSongFromLibrary = (item, currentListId) => {
     message.success({
       content: 'Remove a song successfully',
       style: {
-        marginTop: '48px'
+        marginTop: '48px',
       },
       duration: 4,
     })
-    requestEditLibrary(dispatch, libraryId, item, 'delete')
+    requestEditLibrary(dispatch, libraryId, item, 'delete', currentListId)
   }
-  const handleAddSongToLibrary = (item) => {
+  const handleAddSongToLibrary = (item, selectedList) => {
     message.success({
       content: 'Add a song to library successfully',
       style: {
-        marginTop: '48px'
+        marginTop: '48px',
       },
       duration: 4,
     })
-    requestEditLibrary(dispatch, libraryId, item, 'add')
+    requestEditLibrary(dispatch, libraryId, item, 'add', selectedList)
   }
   const handleSetting = (isAtControl, isAtMobile) => {
     if (isAtControl) {
@@ -343,7 +351,9 @@ function SongSetting(props) {
       {props.isStayLibrary ? (
         <div
           className="song-remove"
-          onClick={() => handleRemoveSongFromLibrary(props.songSelect)}
+          onClick={() =>
+            handleRemoveSongFromLibrary(props.songSelect, currentListId)
+          }
         >
           <i className="bi bi-trash-fill"></i>
           Remove from your library
@@ -351,10 +361,43 @@ function SongSetting(props) {
       ) : (
         <div
           className="song-add"
-          onClick={() => handleAddSongToLibrary(props.songSelect)}
+          onClick={(e) => {
+            e.stopPropagation()
+            setIsAddModalVisible(true)
+          }}
         >
           <i className="bi bi-plus-circle-fill"></i>
           Add from your library
+          <Modal
+            title="Basic Modal"
+            centered
+            visible={isAddModalVisible}
+            onOk={(e) => {
+              e.stopPropagation()
+              handleAddSongToLibrary(props.songSelect, selectedList)
+              setIsAddModalVisible(false)
+            }}
+            onCancel={(e) => {
+              e.stopPropagation()
+              setIsAddModalVisible(false)
+            }}
+          >
+            <Radio.Group
+              onChange={(e) => {
+                e.stopPropagation()
+                setSelectedList(e.target.value)
+              }}
+              value={selectedList}
+            >
+              <Space direction="vertical">
+                {songListInfo.map((list) => (
+                  <Radio key={list.songListId} value={list.songListId}>
+                    {list.name}
+                  </Radio>
+                ))}
+              </Space>
+            </Radio.Group>
+          </Modal>
         </div>
       )}
       <div

@@ -257,10 +257,11 @@ function Header() {
                     {(currentUser && currentUser.name) || currentUser.username}
                   </p>
                   <i
-                    className={`${accountTable
-                      ? 'bi bi-caret-up-fill'
-                      : 'bi bi-caret-down-fill'
-                      } user-setting`}
+                    className={`${
+                      accountTable
+                        ? 'bi bi-caret-up-fill'
+                        : 'bi bi-caret-down-fill'
+                    } user-setting`}
                   ></i>
                   {accountTable && (
                     <div className="header-account">
@@ -376,9 +377,7 @@ function Header() {
                       </Link>
                     </ul>
                   </div>
-                  <i
-                    className="bi bi-dash-lg dash-divide"
-                  ></i>
+                  <i className="bi bi-dash-lg dash-divide"></i>
                 </div>
                 <div className="user-mobile-bottom">
                   <div

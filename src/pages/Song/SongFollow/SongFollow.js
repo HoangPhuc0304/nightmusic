@@ -66,7 +66,7 @@ function SongFollow() {
             </ul>
           </div>
         ) : (
-          <div className='loadingEffect'>
+          <div className="loadingEffect">
             <Spin size="large" tip="Loading..."></Spin>
           </div>
         )}

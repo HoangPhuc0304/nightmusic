@@ -37,9 +37,9 @@ function SelectTheme() {
       .style.setProperty(
         '--theme-background',
         item.image
-          ? (breakpoint < 739
+          ? breakpoint < 739
             ? `linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('${item.image}') center`
-            : `linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('${item.image}')`)
+            : `linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('${item.image}')`
           : item.styleColor,
       )
     setActive((preId) => {

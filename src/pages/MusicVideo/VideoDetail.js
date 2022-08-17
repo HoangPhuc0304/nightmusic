@@ -32,7 +32,9 @@ function VideoDetail() {
   const handleLikeClick = (item) => {
     likeRef.current.classList.toggle('active')
     const statusLike = likeRef.current.getAttribute('class').includes('active')
-    const statusDislike = dislikeRef.current.getAttribute('class').includes('active')
+    const statusDislike = dislikeRef.current
+      .getAttribute('class')
+      .includes('active')
     if (statusLike) {
       statusDislike && dislikeRef.current.classList.remove('active')
     }
@@ -41,7 +43,9 @@ function VideoDetail() {
   const handleDislikeClick = (item) => {
     dislikeRef.current.classList.toggle('active')
     const statusLike = likeRef.current.getAttribute('class').includes('active')
-    const statusDislike = dislikeRef.current.getAttribute('class').includes('active')
+    const statusDislike = dislikeRef.current
+      .getAttribute('class')
+      .includes('active')
     if (statusDislike) {
       statusLike && likeRef.current.classList.remove('active')
     }

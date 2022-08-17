@@ -17,11 +17,17 @@ import {
 } from '../../../redux/apiCalls/apiLibrary'
 import { requestUpdateSong } from '../../../redux/apiCalls/apiSong'
 import { Link } from 'react-router-dom'
+import {
+  changeCurrentSongList,
+  getAllListInfo,
+} from '../../../redux/slices/librarySlice'
 
 function SongLibrary() {
   const libraryId = useSelector((state) => state.library.id)
-  const songLibrary = useSelector((state) => state.library.songs)
+  const songLibrary = useSelector((state) => state.library.currentList)
+  const songListInfo = useSelector(getAllListInfo)
   const listFavoriteSong = useSelector((state) => state.library.favoriteSong)
+  const songListIdBroadcast = useSelector((state) => state.song.songListId)
   const isEmptyBroadcast = useSelector((state) => state.song.isEmpty)
 
   const currentSong = useSelector(getCurrentSong)
@@ -57,9 +63,21 @@ function SongLibrary() {
   }
 
   const handleClickSong = (item, index) => {
-    if (isEmptyBroadcast) {
-      dispatch(songSlice.actions.getBroadcast(songLibrary))
-      dispatch(songSlice.actions.changeStatusEmpty(false))
+    if (isEmptyBroadcast || songListIdBroadcast != songLibrary.songListId) {
+      dispatch(
+        songSlice.actions.getBroadcast(
+          songLibrary.songs
+            ? {
+                songListId: songLibrary.songListId,
+                songBroadcast: songLibrary.songs,
+              }
+            : {
+                songListId: null,
+                songBroadcast: [],
+              },
+        ),
+      )
+      isEmptyBroadcast && dispatch(songSlice.actions.changeStatusEmpty(false))
     }
     dispatch(songSlice.actions.requestSongBroadcast(item))
     songCurrentPlaylist !== -1 &&
@@ -75,9 +93,12 @@ function SongLibrary() {
           0,
           songList.current.querySelector('.song-library-item.active')
             .offsetTop -
-          songList.current.offsetHeight / 2,
+            songList.current.offsetHeight / 2,
         )
     }, 500)
+  }
+  const handleSelectLibrary = (e) => {
+    dispatch(changeCurrentSongList(e.target.value))
   }
 
   useEffect(() => {
@@ -88,7 +109,7 @@ function SongLibrary() {
   }, [receiveRequestFromSetting])
 
   useEffect(() => {
-    !songLibrary[0] && requestGetLibrary(dispatch)
+    !songLibrary.songs[0] && requestGetLibrary(dispatch)
     setIsLoading(true)
     const timeOut = setTimeout(() => {
       setIsLoading(false)
@@ -119,11 +140,12 @@ function SongLibrary() {
       </div>
       <div className="song-library-body">
         <div className="song-library-list" ref={songList}>
-          {songLibrary[0] ? (
-            songLibrary.map((item, index) => (
+          {songLibrary.songs[0] ? (
+            songLibrary.songs.map((item, index) => (
               <div
-                className={`song-library-item ${currentSong && item._id === currentSong._id ? 'active' : ''
-                  }`}
+                className={`song-library-item ${
+                  currentSong && item._id === currentSong._id ? 'active' : ''
+                }`}
                 key={index}
                 ref={(element) => {
                   songItem.current[index] = element
@@ -167,10 +189,11 @@ function SongLibrary() {
                   }}
                 >
                   <i
-                    className={`bi bi-heart-fill song-item-heart ${listFavoriteSong.find((songId) => songId === item._id)
-                      ? 'active'
-                      : ''
-                      }`}
+                    className={`bi bi-heart-fill song-item-heart ${
+                      listFavoriteSong.find((songId) => songId === item._id)
+                        ? 'active'
+                        : ''
+                    }`}
                     ref={(element) => {
                       heartIcons.current[index] = element
                     }}
@@ -190,12 +213,13 @@ function SongLibrary() {
                 </div>
               </div>
             ))
-          ) : <>
-            {isLoading
-              ? <div className='loadingEffect'>
-                <Spin size="large" tip="Loading..."></Spin>
-              </div>
-              : (
+          ) : (
+            <>
+              {isLoading ? (
+                <div className="loadingEffect">
+                  <Spin size="large" tip="Loading..."></Spin>
+                </div>
+              ) : (
                 <Empty
                   image={Empty.PRESENTED_IMAGE_SIMPLE}
                   style={{
@@ -206,22 +230,39 @@ function SongLibrary() {
                     color: 'var(--text-color)',
                   }}
                 >
-                  <Link to='/initial' style={{
-                    textDecoration: 'none',
-                    color: 'var(--text-color)'
-                  }}>
-                    <i
-                      className="bi bi-plus-circle-fill"
+                  {songLibrary.songListId && (
+                    <Link
+                      to="/initial"
                       style={{
-                        fontSize: '48px', cursor: 'pointer'
+                        textDecoration: 'none',
+                        color: 'var(--text-color)',
                       }}
-                    ></i>
-                  </Link>
+                    >
+                      <i
+                        className="bi bi-plus-circle-fill"
+                        style={{
+                          fontSize: '48px',
+                          cursor: 'pointer',
+                        }}
+                      ></i>
+                    </Link>
+                  )}
                 </Empty>
               )}
-          </>
-          }
+            </>
+          )}
         </div>
+      </div>
+      <div className="library-frame-select">
+        <select
+          className="form-select form-select-sm library-select"
+          aria-label=".form-select-sm example"
+          onChange={handleSelectLibrary}
+        >
+          {songListInfo.map((item) => (
+            <option value={item.songListId}>{item.name}</option>
+          ))}
+        </select>
       </div>
     </div>
   )

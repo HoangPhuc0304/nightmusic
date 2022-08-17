@@ -14,6 +14,7 @@ const { Option } = Select
 function Initial() {
   const requestType = useSelector((state) => state.playlist.playlistInfo)
   const requestSingers = useSelector((state) => state.singer.singers)
+  const songLibrary = useSelector((state) => state.library.currentList)
 
   const [types, setTypes] = useState([])
   const [singers, setSingers] = useState([])
@@ -31,8 +32,9 @@ function Initial() {
     requestCreateLibrary(dispatch, {
       type: types,
       singer: singers,
+      songListId: songLibrary.songListId,
     })
-    
+
     setTimeout(() => {
       navigate('/', { replace: true })
     }, 2000)

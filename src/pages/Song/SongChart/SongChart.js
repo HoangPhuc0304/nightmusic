@@ -362,9 +362,11 @@ function SongChart() {
           </div> */}
         </div>
       </div>
-      {!songList[0] && <div className='loadingEffect'>
-        <Spin size="large" tip="Loading..."></Spin>
-      </div>}
+      {!songList[0] && (
+        <div className="loadingEffect">
+          <Spin size="large" tip="Loading..."></Spin>
+        </div>
+      )}
       <div className="chart-clouds">
         {imageCloud.map((image) => (
           <img

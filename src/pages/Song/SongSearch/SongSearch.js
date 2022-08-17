@@ -103,9 +103,11 @@ function SongSearch() {
           </div>
         </div>
       </div>
-      {!songSearchList[0] && <div className='loadingEffect'>
-        <Spin size="large" tip="Loading..."></Spin>
-      </div>}
+      {!songSearchList[0] && (
+        <div className="loadingEffect">
+          <Spin size="large" tip="Loading..."></Spin>
+        </div>
+      )}
     </div>
   )
 }

@@ -36,6 +36,5 @@ const getRequestMovingToAccessPage = (state) =>
   state.layout.isMovingToAccessPage
 
 export default layoutSlice
-export const { getWeather, hideSongNav, getThemes } =
-  layoutSlice.actions
+export const { getWeather, hideSongNav, getThemes } = layoutSlice.actions
 export { getRequestHideSetting, getRequestMovingToAccessPage }

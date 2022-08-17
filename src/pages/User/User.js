@@ -103,7 +103,7 @@ function User() {
     message.success({
       content: 'Update your information successfully',
       style: {
-        marginTop: '48px'
+        marginTop: '48px',
       },
       duration: 4,
     })

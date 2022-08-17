@@ -1,6 +1,12 @@
-import { publicRequest, userRequest } from '../../config/requestMethod'
+import {
+  BASE_URL,
+  publicRequest,
+  userRequest,
+} from '../../config/requestMethod'
 import userSlice, { editUserInfo } from '../slices/userSlice'
 import { USER_ID } from '../../config/requestMethod'
+import axios from 'axios'
+import { getAllLibrary } from '../slices/librarySlice'
 
 //[POST]
 const requestHandleSignIn = async (dispatch, data) => {
@@ -23,7 +29,19 @@ const requestHandleSignIn = async (dispatch, data) => {
 const requestHandleSignUp = async (dispatch, data) => {
   try {
     const res = await publicRequest.post('/api/author/register', data)
-    res.data && dispatch(userSlice.actions.handleSignUp(res.data))
+    if (res.data) {
+      dispatch(userSlice.actions.handleSignUp(res.data))
+      const request = axios.create({
+        baseURL: BASE_URL,
+        headers: {
+          token: `Bearer ${res.data.accessToken}`,
+        },
+      })
+      const initialLibraryRes = await request.post(
+        `/api/library/initialize/${res.data._id}`,
+      )
+      dispatch(getAllLibrary(initialLibraryRes.data))
+    }
   } catch (err) {
     dispatch(userSlice.actions.signUpFailure())
   }

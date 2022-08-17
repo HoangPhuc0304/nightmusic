@@ -13,6 +13,7 @@ function WeatherAndSearch() {
   const weather = useSelector((state) => state.layout.weather)
   const allSong = useSelector((state) => state.song.allSong)
   const libraryId = useSelector((state) => state.library.libraryId)
+  const currentListId = useSelector((state) => state.library.currentList.id)
   const songCurrentPlaylist = useSelector(
     (state) => state.song.songCurrentPlaylist,
   )
@@ -36,7 +37,12 @@ function WeatherAndSearch() {
     setCheckBlur(false)
   }
   const handleClickSong = (item) => {
-    dispatch(addTempSongIntoLibrary(item))
+    dispatch(
+      addTempSongIntoLibrary({
+        song: item,
+        songListId: currentListId,
+      }),
+    )
     dispatch(songSlice.actions.playSongFromSearch(item))
     songCurrentPlaylist !== -1 &&
       dispatch(songSlice.actions.preventSongPlaylist(-1))
@@ -128,7 +134,7 @@ function WeatherAndSearch() {
                 <div
                   key={song._id}
                   className="search-song-item"
-                  onClick={() => handleClickSong(song)}
+                  onClick={() => handleClickSong(song, currentListId)}
                 >
                   <div className="search-song-info">
                     <img
@@ -164,7 +170,6 @@ function WeatherAndSearch() {
           </div>
         )}
       </div>
-
     </div>
   )
 }

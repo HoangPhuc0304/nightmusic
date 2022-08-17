@@ -1,4 +1,4 @@
-@import "../../common/config.scss";
+@import '../../common/config.scss';
 
 .song-page {
   margin-top: 46px;
@@ -289,7 +289,7 @@
           margin: 2px 0;
 
           &::before {
-            content: "Song · ";
+            content: 'Song · ';
           }
         }
       }

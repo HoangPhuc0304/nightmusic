@@ -5,48 +5,90 @@ import {
   songNavBodyAPI,
 } from '../../resources/images/SongNavAPI'
 import { Link, useLocation } from 'react-router-dom'
-import 'antd/dist/antd.css';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
+import 'antd/dist/antd.css'
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
+import { Button, Form, Input, message, Popconfirm } from 'antd'
 import OfficialLogo from '../OfficialLogo/OfficialLogo'
 import { MAX_MOBILE } from '../../config/responsive'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { hideSongNav } from '../../redux/slices/layoutSlice'
+import { requestEditLibrary } from '../../redux/apiCalls/apiLibrary'
+import {
+  changeCurrentSongList,
+  getAllListInfo,
+} from '../../redux/slices/librarySlice'
 function SongNav() {
+  const libraryId = useSelector((state) => state.library.id)
+  const currentListId = useSelector(
+    (state) => state.library.currentList.songListId,
+  )
+  const songListInfo = useSelector(getAllListInfo)
+  const songListInfoAnother = useSelector(getAllListInfo)
   const [breakpoint, setBreakpoint] = useState(window.innerWidth)
   const [indexRename, setIndexRename] = useState(-1)
   const [library, setLibrary] = useState([])
   const dispatch = useDispatch()
   const params = useLocation()
+  const inputRef = useRef([])
   const selectRef = useRef([])
 
   const handleClickSelect = (index) => {
     selectRef.current[index].classList.toggle('active')
   }
   const handleAddLibrary = () => {
-    setLibrary(preLibrary => [
-      ...preLibrary,
-      {
-        name: `#${preLibrary.length + 1}`
-      }
-    ])
+    requestEditLibrary(dispatch, libraryId, '', 'add-list')
   }
-  const handleRename = (e, index) => {
-
-    setLibrary(preLibrary => {
+  const handleRename = (e, songListId) => {
+    setLibrary((preLibrary) => {
       const changedLibrary = [...preLibrary]
-      changedLibrary[index].name = e.target.value
+      const indexList = changedLibrary.findIndex(
+        (item) => item.songListId === songListId,
+      )
+      changedLibrary[indexList].name = e.target.value
       return changedLibrary
     })
-    // console.log(changedLibrary)
   }
-  const handleRemoveLibrary = (index) => {
-    console.log(index)
-    setLibrary(preLibrary => {
-      const changedLibrary = [...preLibrary]
-      changedLibrary.splice(index, 1)
-      return changedLibrary
+  const handleBlur = (e, songListId) => {
+    const beforeName = songListInfoAnother.find(
+      (item) => item.songListId === songListId,
+    ).name
+    e.target.value != beforeName &&
+      requestEditLibrary(
+        dispatch,
+        libraryId,
+        { name: e.target.value },
+        'rename',
+        songListId,
+      )
+  }
+  const handleRemoveLibrary = (songListId) => {
+    message.success({
+      content: 'Remove a list successfully',
+      style: {
+        marginTop: '48px',
+      },
+      duration: 4,
     })
+    requestEditLibrary(dispatch, libraryId, '', 'remove-list', songListId)
+    // setLibrary(preLibrary => {
+    //   const changedLibrary = [...preLibrary]
+    //   const indexList = changedLibrary.findIndex(item => item.songListId === songListId)
+    //   changedLibrary.splice(indexList, 1)
+    //   return changedLibrary
+    // })
+  }
+  const handleClickCurrentLibrary = (currLibraryId) => {
+    dispatch(changeCurrentSongList(currLibraryId))
+  }
+  const handleCleanSongList = (songListId) => {
+    message.success({
+      content: 'Clean a list successfully',
+      style: {
+        marginTop: '48px',
+      },
+      duration: 4,
+    })
+    requestEditLibrary(dispatch, libraryId, '', 'remove-all-song', songListId)
   }
 
   useEffect(() => {
@@ -66,7 +108,10 @@ function SongNav() {
       breakpoint < MAX_MOBILE && dispatch(hideSongNav(true))
     }
   }, [])
-  console.log(library)
+  useEffect(() => {
+    setLibrary(songListInfo)
+  }, [songListInfo])
+  // console.log(currentListId)
   return (
     <div className="song-nav">
       {breakpoint > MAX_MOBILE && <OfficialLogo />}
@@ -74,8 +119,9 @@ function SongNav() {
         {songNavHeaderAPI.map((item) => (
           <Link to={item.link} key={item.id} style={{ textDecoration: 'none' }}>
             <div
-              className={`song-nav-item ${item.link === params.pathname ? 'active' : ''
-                }`}
+              className={`song-nav-item ${
+                item.link === params.pathname ? 'active' : ''
+              }`}
             >
               <i className={item.icon}></i>
               <span className="song-nav-name">{item.name}</span>
@@ -100,60 +146,104 @@ function SongNav() {
           </Link>
         ))}
         <div className="song-nav-line"></div>
-        <div className='song-nav-library'>
+        <div className="song-nav-library">
           <Form>
-            <Form.List
-              name="names"
-            >
+            <Form.List name="names">
               {(fields, { add, remove }, { errors }) => (
                 <>
-                  {fields.map((field, index) => (
+                  {library.map((item, index) => (
                     <Form.Item
-                      key={field.key}
+                      key={item.songListId}
                       className="library-item"
+                      style={
+                        currentListId === item.songListId
+                          ? {
+                              backgroundColor: '#ffffff1a',
+                            }
+                          : {
+                              backgroundColor: 'transparent',
+                            }
+                      }
                     >
                       <Form.Item
-                        className='library-name'
+                        className="library-name"
+                        onClick={() =>
+                          handleClickCurrentLibrary(item.songListId)
+                        }
+                        style={{ cursor: 'pointer' }}
                       >
                         <i className="bi bi-music-note-beamed"></i>
                         <Input
-                          value={library[index].name}
-                          style={{
-                            width: '100%',
-                            border: 'none',
+                          value={item.name}
+                          ref={(element) => {
+                            inputRef.current[index] = element
                           }}
-                          readOnly={index === indexRename ? false : 'readonly'}
+                          style={
+                            item.songListId === indexRename
+                              ? {
+                                  width: '100%',
+                                  border: 'none',
+                                  cursor: 'text',
+                                }
+                              : {
+                                  width: '100%',
+                                  border: 'none',
+                                  cursor: 'inherit',
+                                }
+                          }
+                          readOnly={
+                            item.songListId === indexRename ? false : 'readonly'
+                          }
                           onBlur={(e) => {
                             e.stopPropagation()
                             setIndexRename(-1)
+                            handleBlur(e, item.songListId)
                           }}
-                          onChange={(e) => handleRename(e, index)}
+                          onChange={(e) => handleRename(e, item.songListId)}
                         />
                       </Form.Item>
-                      {fields.length > 0 ? (
+                      {library.length > 0 ? (
                         <>
-                          <MinusCircleOutlined
-                            className="library-remove"
-                            onClick={() => {
-                              remove(field.name)
-                              handleRemoveLibrary(index)
+                          <Popconfirm
+                            placement="bottomLeft"
+                            title="Are you sure to remove this list?"
+                            okText="Yes"
+                            cancelText="No"
+                            onConfirm={() => {
+                              handleRemoveLibrary(item.songListId)
                             }}
-                          />
+                          >
+                            <MinusCircleOutlined className="library-remove" />
+                          </Popconfirm>
+
                           <i
                             className="bi bi-gear library-setting"
                             onClick={() => handleClickSelect(index)}
                           >
                             <div
-                              className='library-select'
+                              className="library-select"
                               ref={(element) => {
                                 selectRef.current[index] = element
                               }}
                             >
                               <ul>
-                                <li onClick={(e) => {
-                                  e.stopPropagation()
-                                  setIndexRename(index)
-                                }}>Rename</li>
+                                <li
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    setIndexRename(item.songListId)
+                                    inputRef.current[index].select()
+                                  }}
+                                >
+                                  Rename
+                                </li>
+                                <li
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleCleanSongList(item.songListId)
+                                  }}
+                                >
+                                  Clean
+                                </li>
                               </ul>
                             </div>
                           </i>
@@ -165,7 +255,7 @@ function SongNav() {
                     <Button
                       type="dashed"
                       onClick={() => {
-                        add()
+                        // add()
                         handleAddLibrary()
                       }}
                       style={{

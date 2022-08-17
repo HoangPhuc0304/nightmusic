@@ -181,8 +181,8 @@ function KindSong() {
                 breakpoint >= MAX_MOBILE
                   ? { backgroundColor: `${playlist.color}` }
                   : {
-                    background: `linear-gradient(${playlist.color},var(--dark-color))`,
-                  }
+                      background: `linear-gradient(${playlist.color},var(--dark-color))`,
+                    }
               }
             >
               <div
@@ -209,12 +209,15 @@ function KindSong() {
                     </span>
                     <p>
                       <i className="bi bi-clock-fill"></i>
-                      {`${new Date(playlist.updatedAt).toUTCString().split(' ')[2]
-                        } ${new Date(playlist.updatedAt).toUTCString().split(' ')[3]
-                        } · ${playlist.duration > 60
+                      {`${
+                        new Date(playlist.updatedAt).toUTCString().split(' ')[2]
+                      } ${
+                        new Date(playlist.updatedAt).toUTCString().split(' ')[3]
+                      } · ${
+                        playlist.duration > 60
                           ? changeTimeFromSecondToDuration(playlist.duration)
                           : ''
-                        }`}
+                      }`}
                     </p>
                   </div>
                 </>
@@ -234,12 +237,15 @@ function KindSong() {
                     </span>
                     <p>
                       <i className="bi bi-clock-fill"></i>
-                      {`${new Date(playlist.updatedAt).toUTCString().split(' ')[2]
-                        } ${new Date(playlist.updatedAt).toUTCString().split(' ')[3]
-                        } · ${playlist.duration > 60
+                      {`${
+                        new Date(playlist.updatedAt).toUTCString().split(' ')[2]
+                      } ${
+                        new Date(playlist.updatedAt).toUTCString().split(' ')[3]
+                      } · ${
+                        playlist.duration > 60
                           ? changeTimeFromSecondToDuration(playlist.duration)
                           : ''
-                        }`}
+                      }`}
                     </p>
                   </div>
                 </div>
@@ -280,10 +286,11 @@ function KindSong() {
                   <tbody className="song-page-list-body">
                     {songList.map((item, index) => (
                       <tr
-                        className={`song-page-item ${currentSong && currentSong._id === item._id
-                          ? ' active'
-                          : ''
-                          }`}
+                        className={`song-page-item ${
+                          currentSong && currentSong._id === item._id
+                            ? ' active'
+                            : ''
+                        }`}
                         key={index}
                         ref={songItem}
                         onClick={() => handleClickSong(item)}
@@ -330,12 +337,13 @@ function KindSong() {
                           }}
                         >
                           <i
-                            className={`bi bi-heart-fill song-item-heart ${favoriteListSong.find(
-                              (songId) => songId === item._id,
-                            )
-                              ? 'active'
-                              : ''
-                              }`}
+                            className={`bi bi-heart-fill song-item-heart ${
+                              favoriteListSong.find(
+                                (songId) => songId === item._id,
+                              )
+                                ? 'active'
+                                : ''
+                            }`}
                             ref={(element) => {
                               heartIcons.current[index] = element
                             }}
@@ -378,11 +386,15 @@ function KindSong() {
           </div>
         ) : (
           <>
-            {isLoading
-              ? <div className='loadingEffect' style={{ color: 'var(--text-color)' }}>
+            {isLoading ? (
+              <div
+                className="loadingEffect"
+                style={{ color: 'var(--text-color)' }}
+              >
                 <Spin size="large" tip="Loading..."></Spin>
               </div>
-              : <Empty
+            ) : (
+              <Empty
                 image={Empty.PRESENTED_IMAGE_SIMPLE}
                 style={{
                   width: '100%',
@@ -391,7 +403,7 @@ function KindSong() {
                   color: 'var(--text-color)',
                 }}
               />
-            }
+            )}
           </>
         )}
       </div>

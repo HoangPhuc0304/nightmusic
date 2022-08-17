@@ -8,7 +8,10 @@ function OfficialLogo() {
     <div>
       <Link to="/" style={{ textDecoration: 'none' }}>
         <div className="official-logo">
-          <img src={logo || require('../../common/header_icon.png')} alt="logo" />
+          <img
+            src={logo || require('../../common/header_icon.png')}
+            alt="logo"
+          />
           <h3>Night Music</h3>
         </div>
       </Link>

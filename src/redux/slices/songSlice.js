@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  songListId: null,
   songBroadcast: [],
   songCurrent: -1,
   memorySaveBroadcast: [],
@@ -18,7 +19,9 @@ const songSlice = createSlice({
   initialState,
   reducers: {
     getBroadcast: (state, action) => {
-      state.songBroadcast = action.payload
+      const { songListId, songBroadcast } = action.payload
+      state.songListId = songListId
+      state.songBroadcast = songBroadcast
     },
     getAllSong: (state, action) => {
       state.allSong = action.payload

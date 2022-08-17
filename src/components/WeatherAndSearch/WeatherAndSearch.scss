@@ -1,4 +1,4 @@
-@import "../../common/config.scss";
+@import '../../common/config.scss';
 
 .header-virtual {
   position: relative;
@@ -79,7 +79,7 @@
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: -10px;
       left: 5%;
@@ -91,7 +91,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: -1rem;
       left: 0;
@@ -261,7 +261,7 @@
         margin: 2px 0;
 
         &::before {
-          content: "Song · ";
+          content: 'Song · ';
         }
       }
     }

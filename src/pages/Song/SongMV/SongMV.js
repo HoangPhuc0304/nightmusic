@@ -40,9 +40,11 @@ function SongMV() {
           </div>
         </div>
       </div>
-      {!listMV[0] && <div className='loadingEffect'>
-        <Spin size="large" tip="Loading..."></Spin>
-      </div>}
+      {!listMV[0] && (
+        <div className="loadingEffect">
+          <Spin size="large" tip="Loading..."></Spin>
+        </div>
+      )}
     </div>
   )
 }
