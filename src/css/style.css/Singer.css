@@ -1,0 +1,61 @@
+#singer {
+  width: calc(100vw * 4 / 5);
+  display: flex;
+  padding-top: 45px;
+  margin-left: calc(100vw / 5);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; }
+  #singer .singer-body {
+    background: linear-gradient(117deg, #fffe, rgba(246, 234, 234, 0.933) 102%);
+    background-size: cover;
+    object-fit: cover;
+    width: 100%; }
+  #singer .singer-container {
+    margin: 0 24px;
+    flex-shrink: 1;
+    flex-direction: column;
+    margin-bottom: 5rem; }
+  #singer .singer-list {
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+    will-change: scroll-position;
+    height: 100%;
+    width: 100%;
+    margin-top: 3rem;
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-wrap: break-word; }
+    #singer .singer-list tr {
+      border: 1px solid black;
+      height: 3rem; }
+    #singer .singer-list th {
+      min-width: 100px;
+      max-width: 200px;
+      text-align: center;
+      font-size: 1rem;
+      overflow-wrap: break-word; }
+  #singer .singer-item img {
+    width: 50%;
+    margin: auto;
+    align-items: center;
+    padding: 0.5rem 0;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 4px 4px 0 0; }
+  #singer .singer-item td {
+    min-width: 100px;
+    max-width: 200px;
+    text-align: center;
+    overflow-wrap: break-word;
+    font-size: 1rem; }
+    #singer .singer-item td i {
+      padding: 0.4rem;
+      cursor: pointer; }

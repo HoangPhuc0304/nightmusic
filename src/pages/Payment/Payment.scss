@@ -1,0 +1,18 @@
+@import '../../common/config.scss';
+
+#payment {
+  width: calc(100vw * 4 / 5);
+  height: 100vh;
+  display: flex;
+  padding-top: 45px;
+  margin-left: calc(100vw / 5);
+  display: flex;
+
+  .payment-body {
+    background: $music-color;
+    background-size: cover;
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+  }
+}

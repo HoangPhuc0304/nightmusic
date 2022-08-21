@@ -1,0 +1,53 @@
+* {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background-color: #444;
+  }
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  overflow: overlay;
+  overflow-x: hidden;
+}
+
+@import './pages/Contact/Contact.scss';
+@import './pages/Home/Home.scss';
+@import './pages/Payment/Payment.scss';
+@import './pages/Playlist/Playlist.scss';
+@import './pages/PlaylistCreate/PlaylistCreate.scss';
+@import './pages/SongPlaylist/SongPlaylist.scss';
+@import './pages/SignIn/SignIn.scss';
+@import './pages/Singer/Singer.scss';
+@import './pages/Song/Song.scss';
+@import './pages/SongCreate/SongCreate.scss';
+@import './pages/SongEdit/SongEdit.scss';
+@import './pages/User/User.scss';
+@import './pages/UserBin/UserBin.scss';
+@import './components/Footer/Footer.scss';
+@import './components/Header/Header.scss';
+@import './components/NavBar/NavBar.scss';
+@import './components/OfficialLogo/OfficialLogo.scss';
+@import './components/UpLoads//UploadFile.scss';

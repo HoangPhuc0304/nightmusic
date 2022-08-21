@@ -1,0 +1,138 @@
+@import '../../common/config.scss';
+
+#user {
+  width: calc(100vw * 4 / 5);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 45px;
+  margin-left: calc(100vw / 5);
+
+  .user-header {
+    width: 100%;
+    background: $music-color;
+    padding: 0 24px;
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+
+    .user-heading {
+    }
+    .user-behavior-delete {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      span {
+        position: absolute;
+        top: 50%;
+        right: -15%;
+        background-color: rgba(167, 40, 167, 0.6);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 1rem;
+        padding: 4px 0.5rem;
+        z-index: 1;
+      }
+      i {
+        font-size: 2rem;
+        color: #000;
+        padding: 4px;
+        cursor: pointer;
+      }
+    }
+    .user-behavior-create {
+      display: flex;
+      align-items: center;
+
+      i {
+        font-size: 2rem;
+        color: #000;
+        padding: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .user-body {
+    background: $music-color;
+    background-size: cover;
+    object-fit: cover;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 24px;
+  }
+  .user-container {
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+
+    .delete-wrap {
+      margin: 1rem 0;
+      pointer-events: none;
+      opacity: 0.2;
+      i {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+      }
+
+      &.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  .user-list {
+    // overflow: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+    will-change: scroll-position;
+    height: 100%;
+    width: 100%;
+    // padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-wrap: break-word;
+
+    tr {
+      border: 1px solid black;
+      height: 3rem;
+    }
+    th {
+      text-align: center;
+      font-size: 1rem;
+      overflow-wrap: break-word;
+    }
+  }
+  .user-item {
+    img {
+      font-size: 1rem;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    td {
+      text-align: center;
+      overflow-wrap: break-word;
+      font-size: 1rem;
+      padding: 0 1rem;
+
+      i {
+        padding: 0.4rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

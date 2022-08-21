@@ -1,0 +1,120 @@
+@import '../../common/config.scss';
+
+.song-playlist {
+  width: calc(100vw * 4 / 5);
+  display: flex;
+  padding-top: 45px;
+  margin-left: calc(100vw / 5);
+  display: flex;
+  flex-direction: column;
+
+  .song-playlist-header {
+    width: 100%;
+    height: 320px;
+    padding: 12px 32px;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    .song-playlist-icon {
+      position: absolute;
+      top: 16px;
+      left: 32px;
+      font-size: 32px;
+      color: $text-color;
+      cursor: pointer;
+    }
+    .song-playlist-info {
+      margin-top: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      i {
+        font-size: 1.2rem;
+        padding: 0.2rem 0.5rem;
+      }
+      h3 {
+        font-size: 72px;
+        color: $text-color;
+        margin: 0;
+      }
+      span {
+        display: flex;
+        align-items: center;
+      }
+    }
+    img {
+      position: absolute;
+      bottom: 24px;
+      right: 32px;
+      height: 80%;
+      width: auto;
+      // -webkit-box-shadow: 0 4px 60px rgba();
+    }
+  }
+  .song-playlist-body {
+    background: $music-color;
+    background-size: cover;
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .song-playlist-container {
+    margin: 0 24px;
+    flex-shrink: 1;
+    flex-direction: column;
+    margin-bottom: 5rem;
+  }
+  .song-playlist-list {
+    // overflow: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    justify-content: flex-start;
+    will-change: scroll-position;
+    height: 100%;
+    width: 100%;
+    margin-top: 3rem;
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-wrap: break-word;
+
+    tr {
+      border: 1px solid black;
+      height: 3rem;
+    }
+    th {
+      min-width: 100px;
+      max-width: 200px;
+      text-align: center;
+      font-size: 1rem;
+      overflow-wrap: break-word;
+    }
+  }
+  .song-playlist-item {
+    img {
+      font-size: 1rem;
+      width: 50%;
+      margin: auto;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    td {
+      min-width: 100px;
+      max-width: 200px;
+      text-align: center;
+      overflow-wrap: break-word;
+      font-size: 1rem;
+
+      i {
+        padding: 0.4rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

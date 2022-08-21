@@ -1,0 +1,100 @@
+@import '../../common//config.scss';
+
+#header {
+  position: fixed;
+  width: 100%;
+  height: 46px;
+  background-color: $primary-color;
+  top: 0;
+  z-index: 3;
+  font-size: $font-text;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .user-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    .user-energy {
+      position: relative;
+      text-decoration: none;
+      color: #fff;
+      font-size: $font-text;
+      font-weight: 600;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      padding: 4px 0.9rem;
+      margin: 0 0.5rem;
+
+      i {
+        position: absolute;
+        color: #ffdf00;
+        top: 50%;
+        left: -30%;
+        transform: translateY(-50%);
+        text-shadow: 0 0 4px var(--change-text);
+        -webkit-text-stroke: 1.5px;
+        font-size: 1.5rem;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    i {
+      font-size: 1.25rem;
+      color: $text-color;
+      margin: 0 0.5rem;
+      &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+    }
+    .user-account {
+      background-color: $dark-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      padding: 4px;
+      font-size: 14px;
+      color: $text-color;
+      margin: 0 8px;
+      cursor: pointer;
+      .user-setting {
+        font-size: 0.85rem;
+      }
+
+      .header-account {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        width: 120%;
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        background-color: $dark-color;
+        .header-account-list {
+          width: 100%;
+          list-style-type: none;
+        }
+
+        .header-account-item {
+          font-size: $font-text;
+          color: $text-color;
+          padding: 8px 12px;
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+          i {
+            color: $text-color;
+            font-size: 1rem !important;
+            margin: 0 10px 0 0 !important;
+          }
+        }
+      }
+    }
+  }
+}

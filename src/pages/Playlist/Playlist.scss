@@ -1,0 +1,70 @@
+@import '../../common/config.scss';
+
+#playlist {
+  width: calc(100vw * 4 / 5);
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  margin-top: 45px;
+  margin-left: calc(100vw / 5);
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background: $music-color;
+
+  .playlist-header {
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+
+    .playlist-behavior {
+      i {
+        font-size: 2rem;
+        color: #000;
+        padding: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+  .playlist-body {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 15rem;
+  }
+
+  .playlist-body-list {
+    margin-top: 3rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2%;
+  }
+
+  .playlist-body-item {
+    position: relative;
+    height: 210px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+
+    h4 {
+      color: $text-color;
+      font-size: 21px;
+      font-weight: 700;
+      padding: 16px 12px;
+    }
+
+    img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 45%;
+      height: auto;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      -webkit-transform: rotate(25deg) translate(18%, -2%);
+    }
+  }
+}
