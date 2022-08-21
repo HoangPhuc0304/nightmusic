@@ -1,4 +1,4 @@
-[![MasterHead](https://i.imgur.com/2Wc321y.png)]
+![MasterHead](https://i.imgur.com/2Wc321y.png)
 <h1 align="center">Hi 👋, I'm Phuc</h1>
 <h3 align="center">A Data + Software Engineer</h3>
 <img align="right" alt="avatar" width="400" src="https://i.imgur.com/eViB5rk.jpg"/>
