@@ -369,7 +369,7 @@ function SongSetting(props) {
           <i className="bi bi-plus-circle-fill"></i>
           Add from your library
           <Modal
-            title="Basic Modal"
+            title="Add song to library"
             centered
             visible={isAddModalVisible}
             onOk={(e) => {
