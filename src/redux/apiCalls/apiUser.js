@@ -17,7 +17,7 @@ const requestHandleSignIn = async (dispatch, data) => {
       //Strick
       setTimeout(() => {
         window.location.reload(false)
-      }, 200)
+      }, 100)
       // window.location.reload(false)
     }
   } catch (err) {
@@ -41,6 +41,11 @@ const requestHandleSignUp = async (dispatch, data) => {
         `/api/library/initialize/${res.data._id}`,
       )
       dispatch(getAllLibrary(initialLibraryRes.data))
+
+      //Strick
+      setTimeout(() => {
+        window.location.reload(false)
+      }, 100)
     }
   } catch (err) {
     dispatch(userSlice.actions.signUpFailure())

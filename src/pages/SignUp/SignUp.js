@@ -212,21 +212,15 @@ function SignUp() {
           <div className="form-social">
             <p className="form-suggest">Or sign in using</p>
             <div className="form-social-icon">
-              <a
-                href=""
+              <div
                 className="social-size social-fb social-background"
-                target="_blank"
-              ></a>
-              <a
-                href=""
+              ></div>
+              <div
                 className="social-size social-google social-background"
-                target="_blank"
-              ></a>
-              <a
-                href=""
+              ></div>
+              <div
                 className="social-size social-apple social-background"
-                target="_blank"
-              ></a>
+              ></div>
             </div>
             <p className="change-text">
               Already have an account?
