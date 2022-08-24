@@ -58,7 +58,7 @@ function Footer() {
               ></a>
               <a
                 href="https://www.pinterest.com/lephuc0304/"
-                className="ti-pinterest-alt"
+                className="ti-pinterest"
                 target="_blank"
               ></a>
               <a
