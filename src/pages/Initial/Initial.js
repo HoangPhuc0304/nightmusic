@@ -49,14 +49,11 @@ function Initial() {
     !requestSingers[0] && requestGetAllSingers(dispatch)
   }, [])
 
-  console.log(types)
-  console.log(singers)
-
   return (
     <div id="initial">
       <div className="initial-header">
         <h3>Get started</h3>
-        <p>Please select item to initialize your library</p>
+        <p>Please select items to initialize your library</p>
       </div>
       <div className="initial-body">
         <div className="initial-container">

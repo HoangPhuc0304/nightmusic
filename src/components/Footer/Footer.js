@@ -47,22 +47,22 @@ function Footer() {
             <h3>Follow us</h3>
             <div className="footer-follow-list">
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/hoangphuc.le.39982631"
                 className="ti-facebook"
                 target="_blank"
               ></a>
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/king.hp.kyj/"
                 className="ti-instagram"
                 target="_blank"
               ></a>
               <a
-                href="https://www.apple.com/"
-                className="ti-apple"
+                href="https://www.pinterest.com/lephuc0304/"
+                className="ti-pinterest-alt"
                 target="_blank"
               ></a>
               <a
-                href="https://twitter.com/"
+                href="https://twitter.com/LHongPh05569261"
                 className="ti-twitter-alt"
                 target="_blank"
               ></a>
@@ -81,18 +81,18 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <div className="footer-bottom-menu">
-          <a href="" target="_blank">
+          <span>
             Legal
-          </a>
-          <a href="" target="_blank">
+          </span>
+          <span>
             Privacy Center
-          </a>
-          <a href="" target="_blank">
+          </span>
+          <span>
             Privacy Policy
-          </a>
-          <a href="" target="_blank">
+          </span>
+          <span>
             Cookies
-          </a>
+          </span>
         </div>
         <div className="footer-bottom-copyright">
           <div className="footer-country">
