@@ -1,6 +1,6 @@
 ![MasterHead](https://i.imgur.com/2Wc321y.png)
 <h1 align="center">Hi 👋, I'm Phuc</h1>
-<h3 align="center">A Data + Software Engineer</h3>
+<h3 align="center">A Software Engineer</h3>
 <img align="right" alt="avatar" width="400" src="https://i.imgur.com/eViB5rk.jpg"/>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=hoangphuc0304&label=Profile%20views&color=0e75b6&style=flat" alt="hoangphuc0304" /> </p>
