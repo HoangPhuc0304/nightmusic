@@ -1,6 +1,5 @@
 ![MasterHead](https://i.imgur.com/2Wc321y.png)
 <h1 align="center">Hi 👋, I'm Phuc Le</h1>
-<h3 align="center">A Software Engineer</h3>
 </br>
 <img align="right" alt="avatar" width="400" src="https://i.imgur.com/eViB5rk.jpg"/>
 
