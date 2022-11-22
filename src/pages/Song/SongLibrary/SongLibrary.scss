@@ -42,7 +42,7 @@
       height: auto;
       border-radius: 6px;
       margin: 0 auto;
-      -webkit-box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+      -webkit-box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
 
       @media only screen and (min-width: 740px) and (max-width: 1023px) {
         width: 50%;
@@ -207,7 +207,7 @@
           background-color: rgba(0, 0, 0, 0.3);
           @media only screen and (max-width: 739px) {
             background-color: transparent;
-            @include icon-effect-mobile
+            @include icon-effect-mobile;
           }
         }
       }

@@ -1,4 +1,4 @@
-const logo = 'https://nightmusic-api.herokuapp.com/layout/header_icon.png'
+const logo = 'https://nightmusic-api.onrender.com/layout/header_icon.png'
 const songNavHeaderAPI = [
   {
     id: 1,
