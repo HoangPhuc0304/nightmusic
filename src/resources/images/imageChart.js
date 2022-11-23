@@ -1,64 +1,64 @@
 const imageChart = [
   {
     id: 1,
-    link: 'https://nightmusic-api.onrender.com/layout/chart_top.jpg',
+    link: 'https://i.imgur.com/fN6KQyr.jpg',
   },
   {
     id: 2,
-    link: 'https://nightmusic-api.onrender.com/layout/chart_top_1.gif',
+    link: 'https://i.imgur.com/Zt94Edu.gif',
   },
   {
     id: 3,
-    link: 'https://nightmusic-api.onrender.com/layout/chart_top_2.jpg',
+    link: 'https://i.imgur.com/c9rdWqd.jpg',
   },
   {
     id: 4,
-    link: 'https://nightmusic-api.onrender.com/layout/chart_top_3.jpg',
+    link: 'https://i.imgur.com/C9lNUuS.jpg',
   },
   {
     id: 5,
-    link: 'https://nightmusic-api.onrender.com/layout/chart_top_6.jpg',
+    link: 'https://i.imgur.com/yEkX6ah.jpg',
   },
 ]
 const imageCloud = [
   {
     id: 1,
-    link: 'https://nightmusic-api.onrender.com/layout/cloud1.png',
+    link: 'https://i.imgur.com/iUyn8Ah.png',
   },
   {
     id: 2,
-    link: 'https://nightmusic-api.onrender.com/layout/cloud2.png',
+    link: 'https://i.imgur.com/es5c2fn.png',
   },
   {
     id: 3,
-    link: 'https://nightmusic-api.onrender.com/layout/cloud4.png',
+    link: 'https://i.imgur.com/gxLqz5V.png',
   },
   {
     id: 4,
-    link: 'https://nightmusic-api.onrender.com/layout/cloud4.png',
+    link: 'https://i.imgur.com/41xlPM8.png',
   },
   {
     id: 5,
-    link: 'https://nightmusic-api.onrender.com/layout/cloud5.png',
+    link: 'https://i.imgur.com/GUCLaoK.png',
   },
 ]
 
 const imageSeason = [
   {
     id: 1,
-    link: 'https://nightmusic-api.onrender.com/layout/footer_season_1.png',
+    link: 'https://i.imgur.com/HIbjWyz.png',
   },
   {
     id: 2,
-    link: 'https://nightmusic-api.onrender.com/layout/footer_season_2.png',
+    link: 'https://i.imgur.com/ptiRTyf.jpg',
   },
   {
     id: 3,
-    link: 'https://nightmusic-api.onrender.com/layout/footer_season_5.png',
+    link: 'https://i.imgur.com/QAvyhWN.png',
   },
   {
     id: 4,
-    link: 'https://nightmusic-api.onrender.com/layout/footer_season_3.png',
+    link: 'https://i.imgur.com/LW5lmFp.png',
   },
 ]
 

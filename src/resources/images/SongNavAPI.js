@@ -1,4 +1,4 @@
-const logo = 'https://nightmusic-api.onrender.com/layout/header_icon.png'
+const logo = 'https://i.imgur.com/GYRIOCC.png'
 const songNavHeaderAPI = [
   {
     id: 1,

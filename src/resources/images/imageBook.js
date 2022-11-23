@@ -1,35 +1,35 @@
 const imageBook = [
   {
     id: 1,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_6.jpg',
+    link: 'https://i.imgur.com/KXVqgAT.jpg',
   },
   {
     id: 2,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_7.jpg',
+    link: 'https://i.imgur.com/rR2GZ1p.jpg',
   },
   {
     id: 3,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_8.jpg',
+    link: 'https://i.imgur.com/Zc1tCVW.jpg',
   },
   {
     id: 4,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_9.jpg',
+    link: 'https://i.imgur.com/7GLMheJ.jpg',
   },
   {
     id: 5,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_10.jpg',
+    link: 'https://i.imgur.com/y6RjYpK.jpg',
   },
   {
     id: 6,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_11.jpg',
+    link: 'https://i.imgur.com/q2IKbAy.jpg',
   },
   {
     id: 7,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_12.jpg',
+    link: 'https://i.imgur.com/8dAkFNU.jpg',
   },
   {
     id: 8,
-    link: 'https://nightmusic-api.onrender.com/layout/book_heading_13.jpg',
+    link: 'https://i.imgur.com/t6G2xwl.jpg',
   },
 ]
 
