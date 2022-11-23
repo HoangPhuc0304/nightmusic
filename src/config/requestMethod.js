@@ -1,6 +1,6 @@
 import axios from 'axios'
 // const confirmedAdmin = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser)
-const BASE_URL = 'https://nightmusic-api.onrender.com/'
+const BASE_URL = 'https://nightmusic-api.cyclic.app/'
 const confirmedInfo =
   localStorage.getItem('persist:root') &&
   JSON.parse(JSON.parse(localStorage.getItem('persist:root')).author)
