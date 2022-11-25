@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://nightmusic-api.cyclic.app/'
+const BASE_URL = 'https://nightmusic-api.onrender.com'
 const confirmedInfo =
   localStorage.getItem('persist:root') &&
   JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser
