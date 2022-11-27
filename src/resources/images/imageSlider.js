@@ -33,7 +33,7 @@ const imageSlider = [
   },
   {
     id: 9,
-    link: 'https://i.imgur.com/P9dRekN.jpg',
+    link: 'https://i.imgur.com/zbBTOJA.jpg',
   },
   {
     id: 10,
@@ -57,7 +57,7 @@ const imageSlider = [
   },
   {
     id: 15,
-    link: 'https://i.imgur.com/zbBTOJA.jpg',
+    link: 'https://i.imgur.com/P9dRekN.jpg',
   }, 
   {
     id: 16,

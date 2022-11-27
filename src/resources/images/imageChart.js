@@ -54,11 +54,11 @@ const imageSeason = [
   },
   {
     id: 3,
-    link: 'https://i.imgur.com/LW5lmFp.png',
+    link: 'https://i.imgur.com/QAvyhWN.png',
   },
   {
     id: 4,
-    link: 'https://i.imgur.com/hmqFQWn.jpg',
+    link: 'https://i.imgur.com/LW5lmFp.png',
   },
 ]
 
