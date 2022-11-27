@@ -17,7 +17,7 @@ const imageSlider = [
   },
   {
     id: 5,
-    link: 'https://i.imgur.com/SgNTv5h.jpg',
+    link: 'https://i.imgur.com/P1sWgXu.jpg',
   },
   {
     id: 6,
@@ -25,19 +25,19 @@ const imageSlider = [
   },
   {
     id: 7,
-    link: 'https://i.imgur.com/gzVAeRo.jpg',
+    link: 'https://i.imgur.com/e0ci9df.jpg',
   },
   {
     id: 8,
-    link: 'https://i.imgur.com/aLfEwS2.jpg',
+    link: 'https://i.imgur.com/0622DPa.jpg',
   },
   {
     id: 9,
-    link: 'https://i.imgur.com/8ENeFhF.jpg',
+    link: 'https://i.imgur.com/P9dRekN.jpg',
   },
   {
     id: 10,
-    link: 'https://i.imgur.com/P1sWgXu.jpg',
+    link: 'https://i.imgur.com/Zg1SiNX.jpg',
   },
   {
     id: 11,
@@ -45,23 +45,23 @@ const imageSlider = [
   },
   {
     id: 12,
-    link: 'https://i.imgur.com/l75LC2n.jpg',
+    link: 'https://i.imgur.com/2YC64jQ.jpg',
   },
   {
     id: 13,
-    link: 'https://i.imgur.com/8iVDxVO.jpg',
+    link: 'https://i.imgur.com/Y7MQcfF.jpg',
   },
   {
     id: 14,
-    link: 'https://i.imgur.com/qvZtySF.jpg',
+    link: 'https://i.imgur.com/eZcNERA.jpg',
   },
   {
     id: 15,
-    link: 'https://i.imgur.com/x1pbpfU.jpg',
+    link: 'https://i.imgur.com/zbBTOJA.jpg',
   }, 
   {
     id: 16,
-    link: 'https://i.imgur.com/e7OxC9r.jpg',
+    link: 'https://i.imgur.com/W85nz4t.jpg',
     
   }
 ]
