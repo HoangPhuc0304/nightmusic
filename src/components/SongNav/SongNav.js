@@ -114,7 +114,9 @@ function SongNav() {
   // console.log(currentListId)
   return (
     <div className="song-nav">
-      {breakpoint > MAX_MOBILE && <OfficialLogo />}
+      {breakpoint > MAX_MOBILE && <div style={{marginLeft: '1.5rem'}}>
+        <OfficialLogo />
+      </div>}
       <div className="song-nav-header">
         {songNavHeaderAPI.map((item) => (
           <Link to={item.link} key={item.id} style={{ textDecoration: 'none' }}>

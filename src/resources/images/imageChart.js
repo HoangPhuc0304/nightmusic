@@ -58,7 +58,7 @@ const imageSeason = [
   },
   {
     id: 4,
-    link: 'https://i.imgur.com/LW5lmFp.png',
+    link: 'https://i.imgur.com/SnXuvnr.png',
   },
 ]
 

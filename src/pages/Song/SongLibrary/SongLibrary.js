@@ -130,7 +130,7 @@ function SongLibrary() {
               src={
                 currentSong
                   ? currentSong.avatar
-                  : require('../../../common/header_icon.png')
+                  : 'https://i.imgur.com/W2Q9ZK4.jpg'
               }
               alt={currentSong ? currentSong.song : 'Night Music'}
             />
