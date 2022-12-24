@@ -40,12 +40,11 @@
   .form-header {
     position: relative;
     height: 96px;
-    background-color: $primary-color;
+    background-color: $dark-color;
     @include flex-center-display;
     border-radius: 2px 2px 0 0;
 
     @media only screen and (max-width: 739px) {
-      background-color: #290335;
       border-radius: 0;
     }
   }

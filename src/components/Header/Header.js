@@ -236,10 +236,10 @@ function Header() {
             {' '}
             {breakpoint > MAX_MOBILE ? (
               <div className="user-box">
-                <a href="" className="user-energy">
+                {/* <a href="" className="user-energy">
                   <i className="bi bi-lightning-charge-fill"></i>
                   {currentUser && `${energy}/${currentUser.energy}`}
-                </a>
+                </a> */}
                 <i
                   className="bi bi-gear-fill user-setting-theme"
                   onClick={handleOpenTheme}
@@ -323,14 +323,14 @@ function Header() {
                         justifyContent: 'space-around',
                       }}
                     >
-                      <Link
+                      {/* <Link
                         to="/"
                         className="user-energy"
                         onClick={handleDisableMenu}
                       >
                         <i className="bi bi-lightning-charge-fill"></i>
                         {currentUser && `${energy}/${currentUser.energy}`}
-                      </Link>
+                      </Link> */}
                       <i
                         className="bi bi-gear-fill user-setting-theme"
                         onClick={handleOpenTheme}
