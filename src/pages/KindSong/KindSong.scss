@@ -107,6 +107,8 @@
       right: 32px;
       height: 80%;
       width: auto;
+      aspect-ratio: 1/1;
+      object-fit: cover;
       -webkit-box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
 
       @media only screen and (max-width: 739px) {

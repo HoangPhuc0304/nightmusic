@@ -71,6 +71,8 @@
     img {
       height: 84%;
       width: auto;
+      aspect-ratio: 1/1;
+      object-fit: cover;
       border-radius: 50%;
       margin: auto 0;
 
