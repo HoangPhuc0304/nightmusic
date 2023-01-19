@@ -54,39 +54,12 @@ const requestHandleSignUp = async (dispatch, data) => {
 
 //[GET]
 const requestGetUser = async (dispatch) => {
-  // fetch(`${BASE_URL}/api/author/login/success`, {
-  //   method: "GET",
-  //   credentials: "include",
-  //   headers: {
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //     "Access-Control-Allow-Credentials": true,
-  //   },
-  // })
-  //   .then((response) => {
-  //     if (response.status === 200) return response.json();
-  //     throw new Error("authentication has been failed!");
-  //   })
-  //   .then((data) => {
-  //     console.log(data)
-  //     if (data) {
-  //       dispatch(userSlice.actions.handleSignIn(data))
-  //     }
-  //     setTimeout(() => {
-  //       window.location.reload(false)
-  //     }, 100)
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   })
-  
   try {
     const res = await publicRequest.get('/api/author/login/success', {
       credentials: "include",
       withCredentials: true
     })
     if (res.data) {
-      console.log(res.data)
       dispatch(userSlice.actions.handleSignIn(res.data))
       //Strick
       setTimeout(() => {
