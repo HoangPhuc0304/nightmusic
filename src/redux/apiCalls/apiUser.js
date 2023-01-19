@@ -54,30 +54,69 @@ const requestHandleSignUp = async (dispatch, data) => {
 
 //[GET]
 const requestGetUser = async (dispatch) => {
-  try {
-    const res = await publicRequest.get('/api/author/login/success', {
-      credentials: "include",
-      withCredentials: true
+  fetch(`${BASE_URL}/api/author/login/success`, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true,
+    },
+  })
+    .then((response) => {
+      if (response.status === 200) return response.json();
+      throw new Error("authentication has been failed!");
     })
-    if (res.data) {
-      dispatch(userSlice.actions.handleSignIn(res.data))
+    .then((data) => {
+      console.log(data)
+      dispatch(userSlice.actions.handleSignIn(data))
       //Strick
       setTimeout(() => {
         window.location.reload(false)
       }, 100)
       // window.location.reload(false)
-    }
-  } catch (err) {
-    console.log(err)
-  }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+  // try {
+  //   const res = await publicRequest.get('/api/author/login/success', {
+  //     credentials: "include",
+  //     withCredentials: true
+  //   })
+  //   if (res.data) {
+  //     dispatch(userSlice.actions.handleSignIn(res.data))
+  //     //Strick
+  //     setTimeout(() => {
+  //       window.location.reload(false)
+  //     }, 100)
+  //     // window.location.reload(false)
+  //   }
+  // } catch (err) {
+  //   console.log(err)
+  // }
 }
 
 //[Delete]
 const requestLogout = async () => {
-  const res = await userRequest.delete('/api/author/logout', {
-    withCredentials: true,
+  // const res = await userRequest.delete('/api/author/logout', {
+  //   withCredentials: true,
+  //   credentials: "include",
+  // })
+  fetch(`${BASE_URL}/api/author/logout`, {
+    method: "GET",
     credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true,
+    },
   })
+    .then(() => {})
+    .catch((err) => {
+      console.log(err);
+    })
 }
 
 //[PUT]
