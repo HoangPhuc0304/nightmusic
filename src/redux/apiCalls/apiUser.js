@@ -56,8 +56,12 @@ const requestHandleSignUp = async (dispatch, data) => {
 const requestGetUser = async (dispatch) => {
   try {
     const res = await publicRequest.get('/api/author/login/success', {
-      withCredentials: true,
       credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
     })
     if (res.data) {
       console.log(res.data)
