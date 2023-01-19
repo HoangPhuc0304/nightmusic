@@ -34,7 +34,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!acceptAccess && document.cookie.split('userId=')[1]) {
+    if (!acceptAccess) {
       requestGetUser(dispatch)
     }
   }, [])

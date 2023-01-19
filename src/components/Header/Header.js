@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
+import { BASE_URL } from '../../config/requestMethod'
 import { MAX_MOBILE, MAX_TABLET } from '../../config/responsive'
 import { requestLogout } from '../../redux/apiCalls/apiUser'
 import { getRequestMovingToAccessPage } from '../../redux/slices/layoutSlice'
@@ -31,9 +32,9 @@ function Header() {
     document.querySelector('.theme-modal').classList.add('active')
   }
   const handleLogOut = () => {
-    requestLogout()
     localStorage.removeItem('persist:root')
     rootReducer(undefined)
+    window.open(`${BASE_URL}/api/author/logout`, "_self")
   }
   const handleClickIconMenu = () => {
     user.current.classList.add('active')
@@ -259,11 +260,10 @@ function Header() {
                     {(currentUser && currentUser.name) || currentUser.username}
                   </p>
                   <i
-                    className={`${
-                      accountTable
+                    className={`${accountTable
                         ? 'bi bi-caret-up-fill'
                         : 'bi bi-caret-down-fill'
-                    } user-setting`}
+                      } user-setting`}
                   ></i>
                   {accountTable && (
                     <div className="header-account">
@@ -282,8 +282,7 @@ function Header() {
                           <i className="bi bi-gem"></i>
                           Upgrade to Premium
                         </li>
-                        <Link
-                          to="/"
+                        <div
                           style={{ textDecoration: 'none' }}
                           onClick={handleLogOut}
                         >
@@ -291,7 +290,7 @@ function Header() {
                             <i className="bi bi-box-arrow-up-right"></i>
                             Log out
                           </li>
-                        </Link>
+                        </div>
                       </ul>
                     </div>
                   )}
@@ -367,8 +366,7 @@ function Header() {
                         <i className="bi bi-gem"></i>
                         Upgrade to Premium
                       </Link>
-                      <Link
-                        to="/"
+                      <div
                         style={{ textDecoration: 'none' }}
                         onClick={handleLogOut}
                       >
@@ -376,7 +374,7 @@ function Header() {
                           <i className="bi bi-box-arrow-up-right"></i>
                           Log out
                         </li>
-                      </Link>
+                      </div>
                     </ul>
                   </div>
                   <i className="bi bi-dash-lg dash-divide"></i>

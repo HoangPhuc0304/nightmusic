@@ -70,15 +70,15 @@ function SignIn() {
     e.stopPropagation()
   }
 
-  const redirectToFacebookPage = async () => {
+  const redirectToFacebookPage = () => {
     window.open(`${BASE_URL}/api/author/facebook`, '_self')
   }
 
-  const redirectToGooglePage = async () => {
+  const redirectToGooglePage = () => {
     window.open(`${BASE_URL}/api/author/google`, '_self')
   }
 
-  const redirectToGithubPage = async () => {
+  const redirectToGithubPage = () => {
     window.open(`${BASE_URL}/api/author/github`, '_self')
   }
   
