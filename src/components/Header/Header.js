@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { MAX_MOBILE, MAX_TABLET } from '../../config/responsive'
+import { requestLogout } from '../../redux/apiCalls/apiUser'
 import { getRequestMovingToAccessPage } from '../../redux/slices/layoutSlice'
 import userSlice from '../../redux/slices/userSlice'
 import { rootReducer } from '../../redux/store'
@@ -30,6 +31,7 @@ function Header() {
     document.querySelector('.theme-modal').classList.add('active')
   }
   const handleLogOut = () => {
+    requestLogout()
     localStorage.removeItem('persist:root')
     rootReducer(undefined)
   }

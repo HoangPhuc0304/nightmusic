@@ -42,7 +42,7 @@ function SongSearch() {
           <div className="song-kind-top-list">
             {songSearchTop.map((item, index) => (
               <Link
-                to={`/search/${item.type}`}
+                to={`/search/${item.type.replaceAll('&','and').replaceAll('/','or')}`}
                 style={{ textDecoration: 'none' }}
                 key={index}
               >
@@ -81,7 +81,7 @@ function SongSearch() {
           <div className="song-kind-body-list">
             {songSearchList.map((item, index) => (
               <Link
-                to={`/search/${item.type}`}
+                to={`/search/${item.type.replaceAll('&',' and ').replaceAll('/','or')}`}
                 style={{ textDecoration: 'none' }}
                 key={index}
               >

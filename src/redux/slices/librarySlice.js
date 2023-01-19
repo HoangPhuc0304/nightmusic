@@ -21,7 +21,9 @@ const librarySlice = createSlice({
     getAllLibrary: (state, action) => {
       state.id = action.payload._id
       state.list = action.payload.list
-      state.currentList = action.payload.list[0]
+      if (action.payload.list[0]) {
+        state.currentList = action.payload.list[0]
+      }
       state.favoriteSong = action.payload.favoriteSong
       state.favoriteVideo = action.payload.favoriteVideo
       state.dislikedVideo = action.payload.dislikedVideo

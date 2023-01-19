@@ -252,6 +252,7 @@ function SongLibrary() {
             </>
           )}
         </div>
+        <span className="song-library-total">Have {songLibrary.songs.length} songs</span>
       </div>
       <div className="library-frame-select">
         <select

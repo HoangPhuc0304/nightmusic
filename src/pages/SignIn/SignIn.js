@@ -1,26 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { BASE_URL, publicRequest } from '../../config/requestMethod'
 import { requestHandleSignIn } from '../../redux/apiCalls/apiUser'
 import layoutSlice from '../../redux/slices/layoutSlice'
 import userSlice from '../../redux/slices/userSlice'
 import './SignIn.scss'
 function SignIn() {
   const errorSignIn = useSelector((state) => state.user.errorSignIn)
-  const [emailText, setEmailText] = useState('')
+  const [usernameText, setUsernameText] = useState('')
   const [password, setPassword] = useState('')
-  const messageEmail = useRef()
-  const emailGroup = useRef()
+  const messageUsername = useRef()
+  const usernameGroup = useRef()
   const messagePassword = useRef()
   const passwordGroup = useRef()
   const closeModal = useRef()
   const dispatch = useDispatch()
   window.scrollTo(0, 0)
 
-  const handleEmailChange = (e) => {
-    setEmailText(e.target.value)
-    messageEmail.current.innerHTML = ''
-    emailGroup.current.classList.remove('invalid')
+  const handleUsernameChange = (e) => {
+    setUsernameText(e.target.value)
+    messageUsername.current.innerHTML = ''
+    usernameGroup.current.classList.remove('invalid')
   }
   const handlePasswordChange = (e) => {
     setPassword(e.target.value)
@@ -29,35 +30,35 @@ function SignIn() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    const checkMail = handleCheckEmail(emailText)
-    const checkPassword = handleCheckInput(password)
-    if (checkMail && checkPassword) {
+    const checkUsername = handleCheckInput('username', usernameText)
+    const checkPassword = handleCheckInput('password', password)
+    if (checkUsername && checkPassword) {
       requestHandleSignIn(dispatch, {
-        email: emailText,
+        username: usernameText,
         password: password,
       })
       // dispatch(userSlice.actions.handleSignIn({
-      //     email: emailText,
+      //     username: usernameText,
       //     password: password
       // }))
     }
   }
 
-  const handleCheckEmail = (text) => {
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    if (!regex.test(text)) {
-      const message = 'This input must be an email'
-      messageEmail.current.innerHTML = message
-      emailGroup.current.classList.add('invalid')
-      return false
-    }
-    return true
-  }
-  const handleCheckInput = (text) => {
+  const handleCheckInput = (type, text) => {
     if (!text) {
       const message = 'Please fill this input'
-      messagePassword.current.innerHTML = message
-      passwordGroup.current.classList.add('invalid')
+      if (type === 'username') {
+        messageUsername.current.innerHTML = message
+        usernameGroup.current.classList.add('invalid')
+      } else if (type === 'password') {
+        messagePassword.current.innerHTML = message
+        passwordGroup.current.classList.add('invalid')
+      } else {
+        messageUsername.current.innerHTML = message
+        messagePassword.current.innerHTML = message
+        usernameGroup.current.classList.add('invalid')
+        passwordGroup.current.classList.add('invalid')
+      }
       return false
     }
     return true
@@ -68,6 +69,19 @@ function SignIn() {
   const handleClickForm = (e) => {
     e.stopPropagation()
   }
+
+  const redirectToFacebookPage = async () => {
+    window.open(`${BASE_URL}/api/author/facebook`, '_self')
+  }
+
+  const redirectToGooglePage = async () => {
+    window.open(`${BASE_URL}/api/author/google`, '_self')
+  }
+
+  const redirectToGithubPage = async () => {
+    window.open(`${BASE_URL}/api/author/github`, '_self')
+  }
+  
   // useEffect(() => {
   //     dispatch(userSlice.actions.handleAccess(false))
   // },[])
@@ -99,22 +113,22 @@ function SignIn() {
         </div>
 
         <div className="form-body">
-          <div className="form-group" ref={emailGroup}>
+          <div className="form-group" ref={usernameGroup}>
             <i className="bi bi-person-fill form-user-icon"></i>
-            <label htmlFor="email" className="form-label">
-              Email
+            <label htmlFor="username" className="form-label">
+              Email/Username
             </label>
             <input
-              id="form-email"
-              value={emailText}
-              name="email"
+              id="form-username"
+              value={usernameText}
+              name="username"
               type="text"
-              placeholder="Type your email"
+              placeholder="Type your email or username"
               className="form-control-input"
-              onChange={handleEmailChange}
-              onBlur={(e) => handleCheckEmail(e.target.value)}
+              onChange={handleUsernameChange}
+              onBlur={(e) => handleCheckInput('username', e.target.value)}
             />
-            <div className="form-message" ref={messageEmail}></div>
+            <div className="form-message" ref={messageUsername}></div>
           </div>
 
           <div className="form-group" ref={passwordGroup}>
@@ -130,7 +144,7 @@ function SignIn() {
               placeholder="Type your password"
               className="form-control-input"
               onChange={handlePasswordChange}
-              onBlur={(e) => handleCheckInput(e.target.value)}
+              onBlur={(e) => handleCheckInput('password', e.target.value)}
             />
             <div className="form-message" ref={messagePassword}></div>
             <div className="forget-password-box">
@@ -148,15 +162,27 @@ function SignIn() {
           <div className="form-social">
             <p className="form-suggest">Or sign in using</p>
             <div className="form-social-icon">
-              <div
-                className="social-size social-fb social-background"
-              ></div>
-              <div
-                className="social-size social-google social-background"
-              ></div>
-              <div
-                className="social-size social-apple social-background"
-              ></div>
+              <img
+                src={require('../../common/facebook.png')}
+                alt=""
+                className="social-size"
+                onClick={redirectToFacebookPage}
+                style={{ "cursor": "pointer" }}
+              ></img>
+              <img
+                src={require('../../common/google.png')}
+                alt=""
+                className="social-size"
+                onClick={redirectToGooglePage}
+                style={{ "cursor": "pointer" }}
+              ></img>
+              <img
+                src={require('../../common/github.png')}
+                alt=""
+                className="social-size"
+                onClick={redirectToGithubPage}
+                style={{ "cursor": "pointer" }}
+              ></img>
             </div>
             <p className="change-text">
               New member?

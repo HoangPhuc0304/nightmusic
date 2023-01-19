@@ -241,4 +241,12 @@
       overflow: hidden;
     }
   }
+
+  &-total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa6a6;
+    margin: 0.5rem 0;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { BASE_URL } from '../../config/requestMethod'
 import { requestHandleSignUp } from '../../redux/apiCalls/apiUser'
 import layoutSlice from '../../redux/slices/layoutSlice'
 import userSlice from '../../redux/slices/userSlice'
@@ -110,12 +111,26 @@ function SignUp() {
   const handleClickForm = (e) => {
     e.stopPropagation()
   }
+
+  const redirectToFacebookPage = async () => {
+    window.open(`${BASE_URL}/api/author/facebook`, '_self')
+  }
+
+  const redirectToGooglePage = async () => {
+    window.open(`${BASE_URL}/api/author/google`, '_self')
+  }
+
+  const redirectToGithubPage = async () => {
+    window.open(`${BASE_URL}/api/author/github`, '_self')
+  }
+
   useEffect(() => {
     dispatch(layoutSlice.actions.movingToAccessPage(true))
     return () => {
       dispatch(layoutSlice.actions.movingToAccessPage(false))
     }
   }, [])
+
   return (
     <div className="modal-sign-up" onClick={handleClickModal}>
       <form
@@ -212,15 +227,27 @@ function SignUp() {
           <div className="form-social">
             <p className="form-suggest">Or sign in using</p>
             <div className="form-social-icon">
-              <div
-                className="social-size social-fb social-background"
-              ></div>
-              <div
-                className="social-size social-google social-background"
-              ></div>
-              <div
-                className="social-size social-apple social-background"
-              ></div>
+              <img
+                src={require('../../common/facebook.png')}
+                alt=""
+                className="social-size"
+                onClick={redirectToFacebookPage}
+                style={{ "cursor": "pointer" }}
+              ></img>
+              <img
+                src={require('../../common/google.png')}
+                alt=""
+                className="social-size"
+                onClick={redirectToGooglePage}
+                style={{ "cursor": "pointer" }}
+              ></img>
+              <img
+                src={require('../../common/github.png')}
+                alt=""
+                className="social-size"
+                onClick={redirectToGithubPage}
+                style={{ "cursor": "pointer" }}
+              ></img>
             </div>
             <p className="change-text">
               Already have an account?

@@ -12,7 +12,7 @@ import SignIn from './pages/SignIn/SignIn'
 import SignUp from './pages/SignUp/SignUp'
 import BookSinger from './pages/BookSinger/BookSinger'
 import KindSong from './pages/KindSong/KindSong'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Song from './pages/Song/Song'
 import SelectTheme from './components/Theme/SelectTheme'
 import Control from './components/Control/Control'
@@ -22,6 +22,8 @@ import Contact from './pages/Contact/Contact'
 import PhotoBackground from './pages/PhotoBackground/PhotoBackground'
 import Initial from './pages/Initial/Initial'
 import User from './pages/User/User'
+import { useEffect } from 'react'
+import { requestGetUser } from './redux/apiCalls/apiUser'
 
 function App() {
   const acceptAccess = useSelector((state) => state.user.acceptAccess)
@@ -29,6 +31,13 @@ function App() {
   const songCurrentPlaylist = useSelector(
     (state) => state.song.songCurrentPlaylist,
   )
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (!acceptAccess) {
+      requestGetUser(dispatch)
+    }
+  }, [])
 
   return (
     <div className="App">
@@ -39,7 +48,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sign-in" element={<Navigate to="/" />} />
-            <Route path="/sign-up" element={<Navigate to="/initial" />} />
+            <Route path="/sign-up" element={<Navigate to="/" />} />
             <Route path="/book" element={<Book />} />
             <Route path="/book/:id" element={<BookSinger />} />
             <Route path="/contact" element={<Contact />} />

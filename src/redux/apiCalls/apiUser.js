@@ -52,6 +52,35 @@ const requestHandleSignUp = async (dispatch, data) => {
   }
 }
 
+//[GET]
+const requestGetUser = async (dispatch) => {
+  try {
+    const res = await publicRequest.get('/api/author/login/success', {
+      withCredentials: true,
+      credentials: "include",
+    })
+    if (res.data) {
+      console.log(res.data)
+      dispatch(userSlice.actions.handleSignIn(res.data))
+      //Strick
+      setTimeout(() => {
+        window.location.reload(false)
+      }, 100)
+      // window.location.reload(false)
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+//[Delete]
+const requestLogout = async () => {
+  const res = await userRequest.delete('/api/author/logout', {
+    withCredentials: true,
+    credentials: "include",
+  })
+}
+
 //[PUT]
 const requestEditUser = async (dispatch, data) => {
   try {
@@ -62,4 +91,4 @@ const requestEditUser = async (dispatch, data) => {
   }
 }
 
-export { requestHandleSignIn, requestHandleSignUp, requestEditUser }
+export { requestHandleSignIn, requestHandleSignUp, requestGetUser, requestEditUser, requestLogout }

@@ -55,6 +55,7 @@ const requestEditLibrary = async (
       `/api/library/edit/${libraryId}?action=${action}&listId=${songListId}`,
       data,
     )
+    console.log(res);
     switch (action) {
       case 'add': {
         if (res.data !== 'no change') {
