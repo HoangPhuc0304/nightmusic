@@ -111,7 +111,6 @@ function SongNav() {
   useEffect(() => {
     setLibrary(songListInfo)
   }, [songListInfo])
-  // console.log(currentListId)
   return (
     <div className="song-nav">
       {breakpoint > MAX_MOBILE && <div style={{marginLeft: '1.5rem'}}>

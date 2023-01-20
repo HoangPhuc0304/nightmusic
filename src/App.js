@@ -7,6 +7,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useSearchParams,
 } from 'react-router-dom'
 import SignIn from './pages/SignIn/SignIn'
 import SignUp from './pages/SignUp/SignUp'
@@ -31,13 +32,6 @@ function App() {
   const songCurrentPlaylist = useSelector(
     (state) => state.song.songCurrentPlaylist,
   )
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (!acceptAccess) {
-      requestGetUser(dispatch)
-    }
-  }, [])
 
   return (
     <div className="App">

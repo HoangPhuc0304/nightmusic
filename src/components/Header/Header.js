@@ -32,9 +32,9 @@ function Header() {
     document.querySelector('.theme-modal').classList.add('active')
   }
   const handleLogOut = () => {
+    window.open(`${BASE_URL}/api/author/logout`, "_self")
     localStorage.removeItem('persist:root')
     rootReducer(undefined)
-    window.open(`${BASE_URL}/api/author/logout`, "_self")
   }
   const handleClickIconMenu = () => {
     user.current.classList.add('active')

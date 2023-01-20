@@ -53,70 +53,28 @@ const requestHandleSignUp = async (dispatch, data) => {
 }
 
 //[GET]
-const requestGetUser = async (dispatch) => {
-  fetch(`${BASE_URL}/api/author/login/success`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Credentials": true,
-    },
-  })
-    .then((response) => {
-      if (response.status === 200) return response.json();
-      throw new Error("authentication has been failed!");
+const requestGetUser = async (dispatch, userId, token) => {
+  try {
+    const res = await publicRequest.get(`/api/author/login/success/${userId}`, {
+      headers: {
+        token: `Bearer ${token}`,
+      },
     })
-    .then((data) => {
-      console.log(data)
-      dispatch(userSlice.actions.handleSignIn(data))
+    if (res.data) {
+      dispatch(userSlice.actions.handleSignIn(res.data))
       //Strick
       setTimeout(() => {
-        window.location.reload(false)
+        window.location = window.location.href.split("?")[0];
       }, 100)
-      // window.location.reload(false)
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-
-  // try {
-  //   const res = await publicRequest.get('/api/author/login/success', {
-  //     credentials: "include",
-  //     withCredentials: true
-  //   })
-  //   if (res.data) {
-  //     dispatch(userSlice.actions.handleSignIn(res.data))
-  //     //Strick
-  //     setTimeout(() => {
-  //       window.location.reload(false)
-  //     }, 100)
-  //     // window.location.reload(false)
-  //   }
-  // } catch (err) {
-  //   console.log(err)
-  // }
+    }
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 //[Delete]
 const requestLogout = async () => {
-  // const res = await userRequest.delete('/api/author/logout', {
-  //   withCredentials: true,
-  //   credentials: "include",
-  // })
-  fetch(`${BASE_URL}/api/author/logout`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Credentials": true,
-    },
-  })
-    .then(() => {})
-    .catch((err) => {
-      console.log(err);
-    })
+  const res = await userRequest.get('/api/author/logout')
 }
 
 //[PUT]

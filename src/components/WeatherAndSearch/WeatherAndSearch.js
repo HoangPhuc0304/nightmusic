@@ -13,7 +13,7 @@ function WeatherAndSearch() {
   const weather = useSelector((state) => state.layout.weather)
   const allSong = useSelector((state) => state.song.allSong)
   const libraryId = useSelector((state) => state.library.libraryId)
-  const currentListId = useSelector((state) => state.library.currentList.id)
+  const currentListId = useSelector((state) => state.library.currentList.songListId)
   const songCurrentPlaylist = useSelector(
     (state) => state.song.songCurrentPlaylist,
   )
