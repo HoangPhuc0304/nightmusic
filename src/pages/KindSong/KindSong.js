@@ -177,13 +177,9 @@ function KindSong() {
           <div className="song-page-box" ref={songPageList}>
             <div
               className="song-page-header"
-              style={
-                breakpoint >= MAX_MOBILE
-                  ? { backgroundColor: `${playlist.color}` }
-                  : {
-                      background: `linear-gradient(${playlist.color},var(--dark-color))`,
-                    }
-              }
+              style={{
+                background: `linear-gradient(${playlist.color},var(--dark-color))`,
+              }}
             >
               <div
                 className="song-page-icon"
