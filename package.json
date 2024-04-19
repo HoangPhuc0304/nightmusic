@@ -1,61 +1,69 @@
 {
-  "homepage": ".",
-  "name": "nightmusic",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.0",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "antd": "^4.22.1",
-    "antd-img-crop": "^4.2.3",
-    "axios": "^1.6.4",
-    "bootstrap-icons": "^1.10.3",
-    "dotenv": "^16.0.1",
-    "moment": "^2.29.4",
-    "node-sass": "^7.0.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-player": "^2.10.0",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "react-swipeable": "^7.0.0",
-    "redux-persist": "^6.0.0",
-    "styled-components": "^5.3.7",
-    "web-vitals": "^2.1.4"
+  "name" : "nightmusic",
+  "version" : "0.1.0",
+  "description" : null,
+  "main" : null,
+  "author" : null,
+  "license" : null,
+  "dependencies" : {
+    "@reduxjs/toolkit" : "^1.8.0",
+    "@testing-library/jest-dom" : "^5.16.2",
+    "@testing-library/react" : "^12.1.4",
+    "@testing-library/user-event" : "^13.5.0",
+    "antd" : "^4.22.1",
+    "antd-img-crop" : "^4.2.3",
+    "axios" : "^1.6.4",
+    "bootstrap-icons" : "^1.10.3",
+    "dotenv" : "^16.0.1",
+    "moment" : "^2.29.4",
+    "node-sass" : "^7.0.2",
+    "react" : "^17.0.2",
+    "react-dom" : "^17.0.2",
+    "react-player" : "^2.10.0",
+    "react-redux" : "^7.2.6",
+    "react-router-dom" : "^6.2.2",
+    "react-scripts" : "5.0.0",
+    "react-swipeable" : "^7.0.0",
+    "redux-persist" : "^6.0.0",
+    "styled-components" : "^5.3.7",
+    "web-vitals" : "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "watch": "node-sass --watch src/App.scss --output src/css/style.css",
-    "beautiful": "prettier --single-quote --trailing-comma all --semi false --write \"src/**/*.{js,json,scss}\"",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "devDependencies" : {
+    "gh-pages" : "^3.2.3",
+    "prettier" : "^2.7.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "scripts" : {
+    "start" : "react-scripts start",
+    "build" : "react-scripts build",
+    "watch" : "node-sass --watch src/App.scss --output src/css/style.css",
+    "beautiful" : "prettier --single-quote --trailing-comma all --semi false --write \"src/**/*.{js,json,scss}\"",
+    "test" : "react-scripts test",
+    "eject" : "react-scripts eject",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "prettier": "^2.7.1"
+  "overrides" : {
+    "request" : null,
+    "tough-cookie" : "4.1.3",
+    "word-wrap" : "1.2.4",
+    "tar" : "6.2.1",
+    "@babel/traverse" : "7.23.2",
+    "json5" : "2.2.2",
+    "ip" : "2.0.1",
+    "minimatch" : "3.0.5",
+    "terser" : "4.8.1",
+    "minimist" : "1.2.6",
+    "express" : "4.19.2",
+    "postcss" : "8.4.31",
+    "ejs" : "3.1.7",
+    "loader-utils" : "1.4.2",
+    "decode-uri-component" : "0.2.1",
+    "async" : "3.2.2",
+    "webpack-dev-middleware" : "7.1.0",
+    "webpack" : "5.76.0",
+    "semver" : "7.5.2",
+    "node-notifier" : "8.0.1",
+    "http-cache-semantics" : "4.1.1",
+    "nth-check" : "2.0.1"
   }
 }
