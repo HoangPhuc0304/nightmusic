@@ -7,12 +7,12 @@
   "license" : null,
   "dependencies" : {
     "@reduxjs/toolkit" : "^1.8.0",
-    "@testing-library/jest-dom" : "^5.16.2",
+    "@testing-library/jest-dom" : "^5.16.5",
     "@testing-library/react" : "^12.1.4",
     "@testing-library/user-event" : "^13.5.0",
     "antd" : "^4.22.1",
     "antd-img-crop" : "^4.2.3",
-    "axios" : "^1.6.4",
+    "axios" : "^1.6.8",
     "bootstrap-icons" : "^1.10.3",
     "dotenv" : "^16.0.1",
     "moment" : "^2.29.4",
@@ -25,7 +25,7 @@
     "react-scripts" : "5.0.0",
     "react-swipeable" : "^7.0.0",
     "redux-persist" : "^6.0.0",
-    "styled-components" : "^5.3.7",
+    "styled-components" : "^6.1.0",
     "web-vitals" : "^2.1.4"
   },
   "devDependencies" : {
